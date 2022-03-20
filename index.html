@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <title>MeilleursBiens - Comparateur de Revenus</title>
+    <link rel="stylesheet" href="assets/css/framework.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="columns">
+    <div class="column is-6 is-12-mobile">
+        <div class="card comparator-card">
+            <div class="card-content">
+                <h5 class="title is-5 is-font-title">Votre situation actuelle</h5>
+
+                <div class="field">
+                    <label class="label">Honoraires annuels <span
+                            class="has-text-primary">(en €)</span></label>
+                    <div class="control">
+                        <input id="ar_honoraires" class="input" type="number" min="1" step="1" value="75000">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Forfait mensuel d'adhésion <span
+                            class="has-text-primary">(en €/mois)</span></label>
+                    <div class="control">
+                        <input id="ar_forfait" class="input" type="number" min="1" step="1" value="150" placeholder="150" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nombre de ventes</label>
+                    <div class="control">
+                        <input id="ar_ventes" class="input" type="number" min="1" step="1" value="10" placeholder="10"/>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Commissions perçues sur les ventes <span class="has-text-primary">(en %)</span></label>
+                    <div class="control">
+                        <input id="ar_commissions" class="input" type="number" min="1" step="1" value="70" placeholder="70"/>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <h4 class="title is-4 "><span id="ar_total">75.000€</span> <small>/an</small></h4>
+                <h5 class="subtitle is-5">Avec votre affiliation actuelle</h5>
+            </div>
+        </div>
+    </div>
+    <div class="column is-6 is-12-mobile">
+        <div class="card comparator-card">
+            <div class="card-content">
+                <h5 class="title is-5 is-font-title ">Avec <span
+                        class="has-text-primary is-font-title">MeilleursBiens</span></h5>
+
+                <div class="field">
+                    <label class="label">Honoraires annuels <span
+                            class="has-text-primary">(en €)</span></label>
+                    <div class="control">
+                        <input id="mb_honoraires" class="input" type="number" value="75000"
+                               readonly disabled/>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Forfait mensuel d'adhésion <span
+                            class="has-text-primary">(en €/mois)</span></label>
+                    <div class="control">
+                        <input id="mb_forfait" class="input" type="number" value="179" readonly
+                               disabled/>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nombre de ventes</label>
+                    <div class="control">
+                        <input id="mb_ventes" class="input" type="number" value="10" readonly
+                               disabled/>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Commissions perçues sur les ventes <span
+                            class="has-text-primary">(en %)</span></label>
+                    <div class="control">
+                        <input id="mb_commissions" class="input" type="number" value="100"
+                               readonly disabled/>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <h4 class="title is-4 has-text-primary"><span id="mb_total">75 000€</span>
+                    <small class="has-text-black">/an
+                        (+<span id="mb_difference">1000€</span>)</small></h4>
+                <h5 class="subtitle is-5">Avec notre réseau</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="./assets/js/calculator.js"></script>
+</body>
+</html>
