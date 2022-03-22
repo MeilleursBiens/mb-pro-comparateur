@@ -57,8 +57,12 @@ ar_input_commissions.addEventListener('input', function() {
 // --------------------------------------------------
 
 function calculate(){
-    let resultNormal = Math.round((ar_honoraires * ar_commissions / 100) - (ar_forfait * 12));
-    let resultMB = Math.round((mb_honoraires - (139 * mb_ventes)) - (mb_forfait * 12));
+    let resultNormal = Math.round((ar_honoraires * (ar_commissions / 100)) - (ar_forfait * 12));
+    let resultMB = Math.round((ar_honoraires - (139 * mb_ventes)) - (mb_forfait * 12));
+
+    resultMB = resultMB < 0 ? 0 : resultMB;
+    mb_difference = resultMB - resultNormal;
+    ar_total = resultNormal;
 
     ar_text_total.innerHTML = formatPrice(resultNormal);
     mb_text_total.innerHTML = formatPrice(resultMB);
