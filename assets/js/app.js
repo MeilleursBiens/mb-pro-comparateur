@@ -32,6 +32,7 @@ ar_input_honoraires.addEventListener('input', function() {
     let value = parseFloat(ar_input_honoraires.value);
     ar_honoraires = isNaN(value) ? 75000 : value;
     mb_input_honoraires.value = ar_honoraires;
+    mb_honoraires = ar_honoraires;
     calculate();
 });
 
@@ -45,6 +46,7 @@ ar_input_ventes.addEventListener('input', function() {
     let value = parseFloat(ar_input_ventes.value);
     ar_ventes = isNaN(value) ? 10 : value;
     mb_input_ventes.value = ar_ventes;
+    mb_ventes = ar_ventes;
     calculate();
 });
 
