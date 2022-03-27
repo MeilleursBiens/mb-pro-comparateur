@@ -25,6 +25,8 @@ var mb_input_ventes = document.querySelector('#mb_ventes');
 var mb_input_commissions = document.querySelector('#mb_commissions');
 var mb_text_total = document.querySelector('#mb_total');
 var mb_text_difference = document.querySelector('#mb_difference');
+var mb_text_total_2 = document.querySelector('#mb_total_2');
+var mb_text_difference_2 = document.querySelector('#mb_difference_2');
 
 // --------------------------------------------------
 
@@ -69,6 +71,8 @@ function calculate(){
     ar_text_total.innerHTML = formatPrice(resultNormal);
     mb_text_total.innerHTML = formatPrice(resultMB);
     mb_text_difference.innerHTML = formatPrice(resultMB - resultNormal);
+    mb_text_total_2.innerHTML = formatPrice(resultMB);
+    mb_text_difference_2.innerHTML = formatPrice(resultMB - resultNormal);
 }
 
 // --------------------------------------------------
