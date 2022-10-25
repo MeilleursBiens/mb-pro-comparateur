@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="field">
-                    <label class="label">Forfait mensuel d'adhésion <span
+                    <label class="label">Forfait mensuel d'adhésion HT<span
                             class="has-text-primary">(en €/mois)</span></label>
                     <div class="control">
                         <input id="ar_forfait" class="input" type="number" min="1" step="1" value="150" placeholder="150" />
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="field">
-                    <label class="label">Forfait mensuel d'adhésion <span
+                    <label class="label">Forfait mensuel d'adhésion HT<span
                             class="has-text-primary">(PACK +)</span></label>
                     <div class="control">
                         <input id="mb_forfait" class="input" type="number" value="259" readonly
@@ -203,15 +203,21 @@
   }
 
   // --------------------------------------------------
+    
+  function roundHundred(value){
+    return Math.round(value / 100) * 100;
+  }
 
   function formatPrice(price){
+    var price_final = roundHundred(price);  
+      
     var formatter = new Intl.NumberFormat('fr-FR', {
       style: 'currency',
       currency: 'EUR',
       maximumFractionDigits: 0,
     });
 
-    return formatter.format(price);
+    return formatter.format(price_final);
   }
 
   // --------------------------------------------------
