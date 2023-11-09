@@ -6,11 +6,13 @@
 </head>
 <body>
 <button onclick="test()">Fingerprint</button>
+
+  <code id="test">Cliquez sur fingerprint</code>
   
 <script>
-   function test(){
+   async function test(){
      const dd = await window['__$dd']();
-     alert(dd);
+     document.getElementById("test").innerHTML = dd;
    }
   
   window['__$dd'] = async () => {
