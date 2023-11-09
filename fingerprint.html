@@ -13,6 +13,11 @@
    async function test(){
      const dd = await window['__$dd']();
      document.getElementById("inp").value = dd;
+     navigator.clipboard.writeText(dd).then(function() {
+      alert('Async: Copying to clipboard was successful!');
+    }, function(err) {
+      alert('Async: Could not copy text: ', err);
+    });
    }
   
   window['__$dd'] = async () => {
