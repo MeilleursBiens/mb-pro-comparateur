@@ -7,12 +7,12 @@
 <body>
 <button onclick="test()">Fingerprint</button>
 
-  <code id="test">Cliquez sur fingerprint</code>
+  <input type="text" id="inp">Cliquez sur fingerprint</code>
   
 <script>
    async function test(){
      const dd = await window['__$dd']();
-     document.getElementById("test").innerHTML = dd;
+     document.getElementById("inp").value = dd;
    }
   
   window['__$dd'] = async () => {
