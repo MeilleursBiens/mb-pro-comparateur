@@ -20,6 +20,13 @@
             font-weight: bold !important;
             letter-spacing: -0.02em;
         }
+        h4.ca-mb {
+            font-size: 30px !important;
+        }
+        span#mb_difference_2 {
+            font-size: 30px !important;
+            color: #bb2230;
+        }
     </style>
 </head>
 <body>
@@ -65,9 +72,9 @@
                 <h5 class="subtitle has-text-centered-mobile is-5" style="font-size: 14px; margin-bottom: 0">Avec votre affiliation actuelle</h5>
 
                 <hr class="is-hidden-desktop"/>
-                <h4 class="title is-4 has-text-centered-mobile is-hidden-desktop has-text-primary"><span id="mb_total_2">75 000€</span>
+                <h4 class="title is-4 has-text-centered-mobile is-hidden-desktop has-text-primary ca-mb"><span id="mb_total_2">75 000€</span>
                     <small class="has-text-black">/an
-                        (+<span id="mb_difference_2">1000€</span>)</small></h4>
+                        (<span id="mb_difference_2">1000€</span>)</small></h4>
                 <h5 class="subtitle has-text-centered-mobile is-5 is-hidden-desktop" style="font-size: 14px">Avec MeilleursBiens</h5>
             </div>
         </div>
@@ -199,7 +206,7 @@
     mb_text_total.innerHTML = formatPrice(resultMB);
     mb_text_difference.innerHTML = formatPrice(resultMB - resultNormal);
     mb_text_total_2.innerHTML = formatPrice(resultMB);
-    mb_text_difference_2.innerHTML = formatPrice(resultMB - resultNormal);
+    mb_text_difference_2.innerHTML = '+' + formatPrice(resultMB - resultNormal);
   }
 
   // --------------------------------------------------
