@@ -98,7 +98,7 @@ function updateReseauxSuggestions() {
 
 /**
  * Lorsqu'un réseau est sélectionné via une suggestion,
- * met à jour les valeurs (DOM et globales) et relance le calcul.
+ * met à jour les valeurs et relance le calcul.
  */
 function selectReseau(reseau) {
   if (!reseau) return;
