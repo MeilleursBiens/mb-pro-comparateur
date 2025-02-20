@@ -720,7 +720,8 @@ body {
   width: 100%;
 }
 
-#reseauSearch {
+#reseauSearch,
+#agencySearch {
   width: 50%;
   display: block;
   margin: 1rem auto 0 auto;
@@ -746,7 +747,8 @@ span#mb_difference_2 {
 }
 
 /* Styles for the search suggestions dropdown */
-.search-container {
+.search-container,
+.agency-search-container {
   position: relative;
   width: 100%;
 }

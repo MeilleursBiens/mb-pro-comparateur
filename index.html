@@ -15,34 +15,38 @@
     <title>Comparateur de Revenus | MeilleursBiens</title>
   </head>
   <body>
-    <div class="search">
-      <div
-        class="control search-container"
-        style="margin-bottom: 8px; position: relative"
-      >
-        <input
-          id="reseauSearch"
-          class="input"
-          type="text"
-          placeholder="Recherchez votre réseau..."
-        />
-        <div id="reseauxSuggestions" class="suggestions"></div>
+    <section style="display: flex; gap: 10px">
+      <div class="search">
+        <h5>Vous êtes agent mandataire ?</h5>
+        <div
+          class="control search-container"
+          style="margin-bottom: 8px; position: relative"
+        >
+          <input
+            id="reseauSearch"
+            class="input"
+            type="text"
+            placeholder="Recherchez votre réseau..."
+          />
+          <div id="reseauxSuggestions" class="suggestions"></div>
+        </div>
       </div>
-    </div>
-    <div class="search">
-      <div
-        class="control agency-search-container"
-        style="margin-bottom: 8px; position: relative"
-      >
-        <input
-          id="agencySearch"
-          class="input"
-          type="text"
-          placeholder="Recherchez votre agence..."
-        />
-        <div id="agenciesSuggestions" class="suggestions"></div>
+      <div class="search">
+        <h5>Vous êtes agent immobilier ?</h5>
+        <div
+          class="control agency-search-container"
+          style="margin-bottom: 8px; position: relative"
+        >
+          <input
+            id="agencySearch"
+            class="input"
+            type="text"
+            placeholder="Recherchez votre agence..."
+          />
+          <div id="agenciesSuggestions" class="suggestions"></div>
+        </div>
       </div>
-    </div>
+    </section>
     <div class="columns">
       <div class="column is-6 is-12-mobile">
         <div class="card comparator-card">
