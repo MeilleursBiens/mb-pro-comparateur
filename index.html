@@ -29,11 +29,27 @@
         <div id="reseauxSuggestions" class="suggestions"></div>
       </div>
     </div>
+    <div class="search">
+      <div
+        class="control agency-search-container"
+        style="margin-bottom: 8px; position: relative"
+      >
+        <input
+          id="agencySearch"
+          class="input"
+          type="text"
+          placeholder="Recherchez votre agence..."
+        />
+        <div id="agenciesSuggestions" class="suggestions"></div>
+      </div>
+    </div>
     <div class="columns">
       <div class="column is-6 is-12-mobile">
         <div class="card comparator-card">
           <div class="card-content">
-            <h5 id="situationTitle" class="title is-5 is-font-title">Votre réseau actuel</h5>
+            <h5 id="situationTitle" class="title is-5 is-font-title">
+              Votre réseau actuel
+            </h5>
             <div class="field">
               <label class="label"
                 >Honoraires annuels HT
@@ -111,7 +127,8 @@
               class="subtitle has-text-centered-mobile is-5"
               style="font-size: 14px; margin-bottom: 0"
             >
-              Votre réseau actuel vous coûte
+              <span id="situation-type">Votre réseau</span>
+              <span id="network-cost-text">vous coûte</span>
               <span id="ar_network">1000€</span> / an
             </h5>
 
@@ -225,8 +242,7 @@
     </div>
 
     <script src="comparator/js/script.js"></script>
-    <script src="comparator/js/getReseaux.js"></script>
+    <script src="comparator/js/compareNetworks.js"></script>
+    <script src="comparator/js/compareAgencies.js"></script>
   </body>
-</html>
-
 </html>

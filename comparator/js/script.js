@@ -13,6 +13,8 @@ var mb_commissions = 100;
 var mb_total = 70502;
 var mb_difference = 10;
 
+let isNetwork = true; // Déplacer la variable ici pour qu'elle soit globale
+
 // --------------------------------------------------
 // Récupération des éléments du DOM
 var ar_input_honoraires = document.querySelector("#ar_honoraires");
@@ -81,6 +83,7 @@ function calculate() {
   mb_text_total_2.innerHTML = formatPrice(resultMB);
   mb_text_difference_2.innerHTML = "+" + formatPrice(resultMB - resultNormal);
   ar_text_network.innerHTML = formatPrice(ar_network);
+  updateNetworkCostText();
 }
 
 // --------------------------------------------------
@@ -102,3 +105,13 @@ function formatPrice(price) {
 // --------------------------------------------------
 // Lancement du calcul initial
 calculate();
+
+// Ajouter la fonction qui met à jour le texte
+function updateNetworkCostText() {
+  const networkCostText = document.getElementById("network-cost-text");
+  const situationType = document.getElementById("situation-type");
+  if (networkCostText && situationType) {
+    networkCostText.textContent = "vous coûte";
+    situationType.textContent = isNetwork ? "Votre réseau" : "Votre agence";
+  }
+}

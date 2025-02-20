@@ -1,12 +1,3 @@
-/*
- * Ce script récupère la page https://meilleursreseaux.com/immobilier/mandataires/?filtrer_par_nom=&OK_filtrer=Filtrer
- * et extrait les 30 réseaux possédant le plus de mandataires.
- * Pour chaque réseau, le script affiche le nom, le nombre de mandataires, les commissions et le prix du pack mensuel.
- */
-
-// Removed require statements for browser compatibility (using native fetch and DOMParser)
-
-// Global variable for réseaux list, updated with the top30 from the fetched data.
 let reseauxList = [
   { name: "iad France", commission: 69, prix_pack: 163 },
   { name: "Safti", commission: 70, prix_pack: 159 },
@@ -128,6 +119,14 @@ function selectReseau(reseau) {
   const suggestionsContainer = document.getElementById("reseauxSuggestions");
   suggestionsContainer.innerHTML = "";
   suggestionsContainer.style.display = "none";
+
+  const situationTitle = document.getElementById("situationTitle");
+  if (situationTitle) {
+    situationTitle.textContent = "Votre réseau actuel";
+  }
+
+  isNetwork = true;
+  updateNetworkCostText();
 }
 
 // Add keyboard navigation functionality
