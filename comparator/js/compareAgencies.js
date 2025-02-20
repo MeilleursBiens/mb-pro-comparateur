@@ -1,14 +1,41 @@
 let agenciesList = [
-  { name: "Century 21", commission: 50 },
-  { name: "Laforêt", commission: 45 },
-  { name: "Guy Hoquet", commission: 48 },
-  { name: "Orpi", commission: 45 },
-  { name: "ERA Immobilier", commission: 47 },
-  { name: "Stéphane Plaza", commission: 45 },
-  { name: "Nestenn", commission: 48 },
-  { name: "Arthurimmo", commission: 50 },
-  { name: "La Centrale de l'Immobilier", commission: 45 },
-  { name: "Foncia", commission: 45 },
+  // Réseaux d'agences traditionnelles
+  { name: "Century 21", commission: 35 }, // Commission standard réseau
+  { name: "Laforêt", commission: 40 }, // Variable selon franchises
+  { name: "Orpi", commission: 38 }, // Moyenne réseau
+  { name: "Guy Hoquet", commission: 35 }, // Fixé par le réseau
+  { name: "ERA Immobilier", commission: 40 },
+  { name: "Stéphane Plaza", commission: 35 },
+  { name: "Foncia", commission: 35 },
+  { name: "Nexity", commission: 35 },
+  { name: "Square Habitat", commission: 38 },
+  { name: "Citya Immobilier", commission: 35 },
+  { name: "L'Adresse", commission: 40 }, // Réseau coopératif
+  { name: "Avis Immobilier", commission: 38 },
+  { name: "Cimm Immobilier", commission: 35 },
+  { name: "La Forêt Immobilier", commission: 40 },
+  { name: "Arthurimmo", commission: 38 }, // Réseau notarial
+  { name: "Nestenn", commission: 35 },
+  { name: "Immo de France", commission: 35 },
+  { name: "Agences Réunies", commission: 38 },
+
+  // Agences haut de gamme
+  { name: "Barnes", commission: 45 }, // Luxe international
+  { name: "Daniel Féau", commission: 45 }, // Prestige Paris
+  { name: "Sotheby's", commission: 45 }, // Réseau international
+  { name: "Emile Garcin", commission: 45 },
+  { name: "John Taylor", commission: 45 }, // Groupe LVMH
+  { name: "Coldwell Banker", commission: 45 }, // Luxe international
+  { name: "Engel & Völkers", commission: 45 }, // Réseau allemand
+  { name: "Knight Frank", commission: 45 }, // Britannique haut de gamme
+
+  // Néo-agences
+  { name: "Proprioo", commission: 50 }, // Modèle hybride
+  { name: "Hosman", commission: 45 }, // Salariés + bonus
+  { name: "Zefir", commission: 45 }, // Nouveau modèle
+  { name: "Liberkeys", commission: 45 }, // Tech-enabled
+  { name: "PriceHubble", commission: 45 }, // Data-driven
+  { name: "Welmo", commission: 45 }, // Digital first
 ];
 
 // Ajouter la gestion du clavier pour les agences
