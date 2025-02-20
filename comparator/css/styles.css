@@ -782,3 +782,7 @@ span#mb_difference_2 {
 .suggestion-item:hover {
   background-color: #f0f0f0;
 }
+
+.suggestion-item.selected {
+  background-color: #f0f0f0;
+}

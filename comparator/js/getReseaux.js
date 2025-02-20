@@ -70,9 +70,10 @@ function updateReseauxSuggestions() {
   const top5 = filteredNetworks.slice(0, 5);
 
   suggestionsContainer.innerHTML = "";
-  top5.forEach((reseau) => {
+  top5.forEach((reseau, index) => {
     const suggestionItem = document.createElement("div");
     suggestionItem.classList.add("suggestion-item");
+    suggestionItem.setAttribute("data-index", index); // Add index for keyboard navigation
     suggestionItem.textContent = reseau.name;
     suggestionItem.style.cursor = "pointer";
     suggestionItem.style.padding = "5px";
@@ -129,12 +130,67 @@ function selectReseau(reseau) {
   suggestionsContainer.style.display = "none";
 }
 
+// Add keyboard navigation functionality
+let currentSelection = -1;
+
+function handleKeyboardNavigation(e) {
+  const suggestionsContainer = document.getElementById("reseauxSuggestions");
+  const items = suggestionsContainer.getElementsByClassName("suggestion-item");
+
+  // If suggestions are not visible, don't handle keyboard navigation
+  if (suggestionsContainer.style.display === "none") {
+    currentSelection = -1;
+    return;
+  }
+
+  // Remove previous selection
+  if (currentSelection >= 0 && items[currentSelection]) {
+    items[currentSelection].classList.remove("selected");
+  }
+
+  switch (e.key) {
+    case "ArrowDown":
+      e.preventDefault();
+      currentSelection = Math.min(currentSelection + 1, items.length - 1);
+      break;
+    case "ArrowUp":
+      e.preventDefault();
+      currentSelection = Math.max(currentSelection - 1, 0);
+      break;
+    case "Enter":
+      e.preventDefault();
+      if (currentSelection >= 0 && items[currentSelection]) {
+        const index = parseInt(
+          items[currentSelection].getAttribute("data-index")
+        );
+        const filteredNetworks = reseauxList.filter((reseau) =>
+          reseau.name
+            .toLowerCase()
+            .includes(
+              document.getElementById("reseauSearch").value.toLowerCase()
+            )
+        );
+        selectReseau(filteredNetworks[index]);
+      }
+      return;
+    default:
+      return;
+  }
+
+  // Add selection to new item
+  if (items[currentSelection]) {
+    items[currentSelection].classList.add("selected");
+    items[currentSelection].scrollIntoView({ block: "nearest" });
+  }
+}
+
 // Initialisation dès que le DOM est chargé
 document.addEventListener("DOMContentLoaded", async () => {
   // Add search input listener for suggestions update
   const searchInput = document.getElementById("reseauSearch");
   if (searchInput) {
     searchInput.addEventListener("input", updateReseauxSuggestions);
+    searchInput.addEventListener("keydown", handleKeyboardNavigation);
   }
 });
 
