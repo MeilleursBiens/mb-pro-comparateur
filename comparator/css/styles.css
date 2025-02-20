@@ -717,12 +717,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  min-width: 250px;
+  max-width: 400px;
 }
 
 #reseauSearch,
 #agencySearch {
-  width: 50%;
+  width: 100%;
   display: block;
   margin: 1rem auto 0 auto;
 }
@@ -753,22 +754,22 @@ span#mb_difference_2 {
   width: 100%;
 }
 
-#reseauxSuggestions {
+#reseauxSuggestions,
+#agenciesSuggestions {
   position: absolute;
-  display: none; /* Hide suggestions by default */
-  top: 100%; /* directly below the input */
+  display: none;
+  top: 100%;
   left: 0;
   right: 0;
+  width: 100%;
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 4px;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   max-height: 200px;
   overflow-y: auto;
   margin-top: 2px;
-  width: 50%;
-  margin: 0 auto;
 }
 
 .suggestion-item {
@@ -787,4 +788,27 @@ span#mb_difference_2 {
 
 .suggestion-item.selected {
   background-color: #f0f0f0;
+}
+
+/* Ajouter le style pour la section des recherches */
+.search-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+/* Ajuster pour le responsive */
+@media screen and (max-width: 768px) {
+  .search-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .search {
+    width: 100%;
+    max-width: none;
+  }
 }

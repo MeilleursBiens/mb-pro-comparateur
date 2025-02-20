@@ -138,6 +138,12 @@ function selectAgency(agency) {
   const searchInput = document.getElementById("agencySearch");
   searchInput.value = agency.name;
 
+  // Clear network search input
+  const networkSearchInput = document.getElementById("reseauSearch");
+  if (networkSearchInput) {
+    networkSearchInput.value = "";
+  }
+
   const suggestionsContainer = document.getElementById("agenciesSuggestions");
   suggestionsContainer.innerHTML = "";
   suggestionsContainer.style.display = "none";

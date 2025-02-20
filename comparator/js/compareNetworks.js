@@ -115,6 +115,12 @@ function selectReseau(reseau) {
   const searchInput = document.getElementById("reseauSearch");
   searchInput.value = reseau.name;
 
+  // Clear agency search input
+  const agencySearchInput = document.getElementById("agencySearch");
+  if (agencySearchInput) {
+    agencySearchInput.value = "";
+  }
+
   // Clear and hide the suggestions container
   const suggestionsContainer = document.getElementById("reseauxSuggestions");
   suggestionsContainer.innerHTML = "";
