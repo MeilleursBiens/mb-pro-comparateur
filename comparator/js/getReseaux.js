@@ -123,12 +123,6 @@ function selectReseau(reseau) {
   const searchInput = document.getElementById("reseauSearch");
   searchInput.value = reseau.name;
 
-  // Update the situation title text
-  const situationTitleElement = document.getElementById("situationTitle");
-  if (situationTitleElement) {
-    situationTitleElement.textContent = `Votre situation chez ${reseau.name}`;
-  }
-
   // Clear and hide the suggestions container
   const suggestionsContainer = document.getElementById("reseauxSuggestions");
   suggestionsContainer.innerHTML = "";
