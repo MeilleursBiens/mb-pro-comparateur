@@ -175,6 +175,10 @@ function selectAgency(agency) {
   suggestionsContainer.innerHTML = "";
   suggestionsContainer.style.display = "none";
 
+  if (typeof calculate === "function") {
+    calculate();
+  }
+
   updateNetworkCostText();
 }
 
