@@ -108,9 +108,13 @@ function selectReseau(reseau) {
   window.ar_commissions = reseau.commission;
   window.ar_forfait = reseau.prix_pack;
 
-  if (typeof calculate === "function") {
-    calculate();
+  const situationTitle = document.getElementById("situationTitle");
+  if (situationTitle) {
+    situationTitle.textContent = "Votre réseau actuel";
   }
+
+  isNetwork = true;
+  updateNetworkCostText();
 
   const searchInput = document.getElementById("reseauSearch");
   searchInput.value = reseau.name;
@@ -121,18 +125,27 @@ function selectReseau(reseau) {
     agencySearchInput.value = "";
   }
 
-  // Clear and hide the suggestions container
-  const suggestionsContainer = document.getElementById("reseauxSuggestions");
-  suggestionsContainer.innerHTML = "";
-  suggestionsContainer.style.display = "none";
+  // Clear and hide suggestions containers
+  const reseauxSuggestionsContainer =
+    document.getElementById("reseauxSuggestions");
+  reseauxSuggestionsContainer.innerHTML = "";
+  reseauxSuggestionsContainer.style.display = "none";
+  reseauxSuggestionsContainer.style.border = "none";
+  reseauxSuggestionsContainer.style.boxShadow = "none";
 
-  const situationTitle = document.getElementById("situationTitle");
-  if (situationTitle) {
-    situationTitle.textContent = "Votre réseau actuel";
+  const agenciesSuggestionsContainer = document.getElementById(
+    "agenciesSuggestions"
+  );
+  if (agenciesSuggestionsContainer) {
+    agenciesSuggestionsContainer.innerHTML = "";
+    agenciesSuggestionsContainer.style.display = "none";
+    agenciesSuggestionsContainer.style.border = "none";
+    agenciesSuggestionsContainer.style.boxShadow = "none";
   }
 
-  isNetwork = true;
-  updateNetworkCostText();
+  if (typeof calculate === "function") {
+    calculate();
+  }
 }
 
 // Add keyboard navigation functionality

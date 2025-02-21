@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="comparator/css/styles.css" />
+    <title>Comparateur de Revenus | MeilleursBiens</title>
+  </head>
+  <body>
+    <div
+      class="card comparator-card"
+      style="
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 2px solid rgba(128, 128, 128, 0.486);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1),
+          inset 0 0 32px 0 rgba(128, 128, 128, 0.1);
+      "
+    >
+      <div class="card-content">
+        <!-- Champs principaux -->
+        <div class="field">
+          <label class="label"
+            >Honoraires annuels HT
+            <span class="has-text-primary">(en €)</span></label
+          >
+          <div class="control">
+            <input
+              id="ar_honoraires"
+              class="input"
+              type="number"
+              min="1"
+              step="1"
+              value="75000"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Nombre de ventes</label>
+          <div class="control">
+            <input
+              id="ar_ventes"
+              class="input"
+              type="number"
+              min="1"
+              step="1"
+              value="12"
+            />
+          </div>
+        </div>
+
+        <!-- Champs de recherche en 2 colonnes -->
+        <div class="columns">
+          <div class="column is-6">
+            <div class="field">
+              <label class="label">Sélectionnez un réseau</label>
+              <div class="control search-container">
+                <input
+                  id="reseauSearch"
+                  class="input"
+                  type="text"
+                  placeholder="Recherchez votre réseau..."
+                />
+                <div id="reseauxSuggestions" class="suggestions"></div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="field">
+              <label class="label">Sélectionnez une agence</label>
+              <div class="control agency-search-container">
+                <input
+                  id="agencySearch"
+                  class="input"
+                  type="text"
+                  placeholder="Recherchez votre agence..."
+                />
+                <div id="agenciesSuggestions" class="suggestions"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Texte explicatif -->
+        <p class="has-text-centered" style="margin: 0.5rem 0">
+          Les chiffres des réseaux et des agences peuvent être différents de la
+          réalité, vous pouvez les adapter manuellement juste en dessous
+        </p>
+
+        <!-- Forfait et Commissions en 2 colonnes -->
+        <div class="columns">
+          <div class="column is-6">
+            <div class="field">
+              <label class="label"
+                >Forfait mensuel d'adhésion HT
+                <span class="has-text-primary">(en €/mois)</span></label
+              >
+              <div class="control">
+                <input
+                  id="ar_forfait"
+                  class="input"
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="150"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="field">
+              <label class="label"
+                >Commissions perçues sur les ventes
+                <span class="has-text-primary">(en %)</span></label
+              >
+              <div class="control">
+                <input
+                  id="ar_commissions"
+                  class="input"
+                  type="number"
+                  min="1"
+                  step="1"
+                  value="70"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <!-- Résultats en 2 colonnes -->
+        <div class="columns">
+          <div class="column is-6">
+            <div
+              class="result-card"
+              style="
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                border: 1px solid #e1e6eb;
+              "
+            >
+              <h4 class="title has-text-centered is-4" style="font-size: 30px">
+                <span id="ar_total">52.200€</span> <small>/an</small>
+              </h4>
+              <h5
+                class="subtitle has-text-centered is-5"
+                style="font-size: 14px"
+              >
+                <span id="situation-type">Votre situation</span>
+              </h5>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div
+              class="result-card"
+              style="
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 16px rgba(187, 32, 48, 0.15);
+                border: 1px solid #bb2030;
+              "
+            >
+              <h4
+                class="title has-text-centered is-4 has-text-primary"
+                style="font-size: 30px"
+              >
+                <span id="mb_total">75.000€</span>
+                <small class="has-text-primary">/an</small>
+              </h4>
+              <h5
+                class="subtitle has-text-centered is-5"
+                style="font-size: 14px"
+              >
+                Avec MeilleursBiens
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="has-text-centered" style="margin-top: 1rem">
+          <h3
+            class="has-text-primary"
+            style="font-weight: bold; font-size: 20px"
+          >
+            Votre situation vous fait perdre
+            <span id="mb_difference" style="color: #bb2230 !important"
+              >22.800€</span
+            >
+            / an
+          </h3>
+          <p style="font-weight: bold">
+            Chez nous c'est simple,
+            <span style="color: #bb2230 !important">199€/mois</span> pour gagner
+            <span style="color: #bb2230 !important"
+              >100% de vos commissions</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="comparator/js/script.js"></script>
+    <script src="comparator/js/compareNetworks.js"></script>
+    <script src="comparator/js/compareAgencies.js"></script>
+  </body>
+</html>

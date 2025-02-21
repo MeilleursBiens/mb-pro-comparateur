@@ -36,52 +36,68 @@ var mb_text_difference_2 = document.querySelector("#mb_difference_2");
 // --------------------------------------------------
 // Ajout des écouteurs d'évènements
 
-ar_input_honoraires.addEventListener("input", function () {
-  let value = parseFloat(ar_input_honoraires.value);
-  ar_honoraires = isNaN(value) ? 75000 : value;
-  mb_input_honoraires.value = ar_honoraires;
-  mb_honoraires = ar_honoraires;
-  calculate();
-});
-
-ar_input_forfait.addEventListener("input", function () {
-  let value = parseFloat(ar_input_forfait.value);
-  ar_forfait = isNaN(value) ? 259 : value;
-  calculate();
-});
-
-ar_input_ventes.addEventListener("input", function () {
-  let value = parseFloat(ar_input_ventes.value);
-  ar_ventes = isNaN(value) ? 10 : value;
-  mb_input_ventes.value = ar_ventes;
-  mb_ventes = ar_ventes;
-  calculate();
-});
-
-ar_input_commissions.addEventListener("input", function () {
-  let value = parseFloat(ar_input_commissions.value);
-  ar_commissions = isNaN(value) ? 70 : value;
-  calculate();
-});
+ar_input_honoraires.addEventListener("input", calculate);
+ar_input_forfait.addEventListener("input", calculate);
+ar_input_ventes.addEventListener("input", calculate);
+ar_input_commissions.addEventListener("input", calculate);
 
 // --------------------------------------------------
 // Fonction de calcul
 function calculate() {
+  // Récupérer les valeurs actuelles
+  let honoraires = parseFloat(ar_input_honoraires.value) || 0;
+  let forfait = parseFloat(ar_input_forfait.value) || 0;
+  let ventes = parseFloat(ar_input_ventes.value) || 0;
+  let commissions = parseFloat(ar_input_commissions.value) || 0;
+
+  // Calcul situation actuelle
   let resultNormal = Math.round(
-    ar_honoraires * (ar_commissions / 100) - ar_forfait * 12
+    honoraires * (commissions / 100) - forfait * 12
   );
-  let resultMB = Math.round(ar_honoraires - 159 * mb_ventes - mb_forfait * 12);
 
-  resultMB = resultMB < 0 ? 0 : resultMB;
-  mb_difference = resultMB - resultNormal;
-  ar_total = resultNormal;
-  ar_network = ar_honoraires - resultNormal;
+  // Calcul MeilleursBiens (100% des honoraires - pack+ mensuel - coût par vente)
+  let resultMB = Math.round(honoraires - 199 * 12 - 159 * ventes);
 
+  // S'assurer que le résultat n'est pas négatif
+  resultMB = Math.max(0, resultMB);
+
+  // Calculer la différence
+  let difference = resultMB - resultNormal;
+
+  // Mettre à jour les affichages
   ar_text_total.innerHTML = formatPrice(resultNormal);
   mb_text_total.innerHTML = formatPrice(resultMB);
-  mb_text_difference.innerHTML = formatPrice(resultMB - resultNormal);
-  mb_text_total_2.innerHTML = formatPrice(resultMB);
-  mb_text_difference_2.innerHTML = "+" + formatPrice(resultMB - resultNormal);
+  mb_text_difference.innerHTML = formatPrice(Math.abs(difference));
+
+  // Mettre à jour le texte de la différence
+  const differenceText = document.querySelector(".has-text-danger");
+  if (differenceText) {
+    if (difference > 0) {
+      differenceText.innerHTML = `Votre situation vous fait perdre <span id="mb_difference">${formatPrice(
+        difference
+      )}</span> / an`;
+    } else {
+      differenceText.innerHTML = `Votre situation vous fait gagner <span id="mb_difference">${formatPrice(
+        Math.abs(difference)
+      )}</span> / an`;
+    }
+  }
+
+  // Synchroniser les champs honoraires
+  mb_input_honoraires.value = honoraires;
+  mb_honoraires = honoraires;
+
+  // Synchroniser les champs ventes
+  mb_input_ventes.value = ventes;
+  mb_ventes = ventes;
+
+  // Mettre à jour les autres variables
+  ar_total = resultNormal;
+  ar_network = honoraires - resultNormal;
+  mb_difference = resultMB - resultNormal;
+  mb_total = resultMB;
+
+  // Mettre à jour les textes de réseau
   ar_text_network.innerHTML = formatPrice(ar_network);
   updateNetworkCostText();
 }
