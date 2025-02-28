@@ -15,7 +15,7 @@
   </head>
   <body>
     <div
-      class="card comparator-card"
+      class="card comparator-card diffusion-card"
       style="
         max-width: 800px;
         margin: 2rem auto;
@@ -29,29 +29,12 @@
     >
       <div class="card-content">
 
-        <div id="portals-list">
-
-        </div>
-
-        <div style="display: flex; justify-content: flex-end; margin-top: 2rem; margin-bottom: calc(0.75rem + 5px)">
-          <div class="field" style="width:  100%">
-              <label class="label">Nombre d'annonces diffusées</label>
-              <input
-                id="ads-count"
-                class="input"
-                type="number"
-                min="1"
-                step="1"
-                value="1"
-                style="background-color: #fff; color: #000"
-              />
-          </div>
-        </div>
+        <div id="portals-list"></div>
 
         <div id="portals-fields"></div>
         
-        <div style="display: flex; justify-content: flex-end; margin-left: 1rem;">
-          <div class="field" style="width:  33.33%">
+        <div style="display: flex; justify-content: flex-end; margin-left: 2rem;">
+          <div class="field" style="width:  23.33%">
               <label class="label">Nombre de jours diffusés (global)</label>
               <input
                 id="portals-global-duration"
@@ -90,7 +73,7 @@
                 class="title has-text-centered is-4 has-text-primary"
                 style="font-size: 30px"
               >
-                <span id="mb_total">36.60 €</span>
+                <span id="mb_total">36.60 € / HT</span>
               </h4>
             </div>
           </div>
@@ -106,10 +89,6 @@
         </div>
       </div>
     </div>
-
-    <script src="comparator/js/script.js"></script>
     <script src="comparator/js/scriptAds.js"></script>
-    <script src="comparator/js/compareNetworks.js"></script>
-    <script src="comparator/js/compareAgencies.js"></script>
   </body>
 </html>

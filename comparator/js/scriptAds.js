@@ -1,16 +1,18 @@
 const portals = [
   {
     id: 1,
-    name: "Leboncoin",
+    name: "Leboncoin + À Vendre À Louer",
     price: 0.37,
     duration: 30,
+    adsCount: 1,
     enabled: true,
   },
   {
     id: 2,
-    name: "SeLoger",
+    name: "SeLoger + Logic-Immo",
     price: 0.63,
     duration: 30,
+    adsCount: 1,
     enabled: true,
   },
   {
@@ -18,13 +20,7 @@ const portals = [
     name: "Bien'ici",
     price: 0.22,
     duration: 30,
-    enabled: false,
-  },
-  {
-    id: 4,
-    name: "Ouest France",
-    price: 0.48,
-    duration: 30,
+    adsCount: 1,
     enabled: false,
   },
   {
@@ -32,20 +28,7 @@ const portals = [
     name: "Figaro Immo",
     price: 0.19,
     duration: 30,
-    enabled: false,
-  },
-  {
-    id: 6,
-    name: "Proprités Le Figaro",
-    price: 1.41,
-    duration: 30,
-    enabled: false,
-  },
-  {
-    id: 7,
-    name: "Belles Demeures",
-    price: 1.98,
-    duration: 30,
+    adsCount: 1,
     enabled: false,
   },
   {
@@ -53,6 +36,15 @@ const portals = [
     name: "ParuVendu",
     price: 0.29,
     duration: 30,
+    adsCount: 1,
+    enabled: false,
+  },
+  {
+    id: 4,
+    name: "Ouest France",
+    price: 0.48,
+    duration: 30,
+    adsCount: 1,
     enabled: false,
   },
   {
@@ -60,6 +52,7 @@ const portals = [
     name: "Green-Acres",
     price: 0.39,
     duration: 30,
+    adsCount: 1,
     enabled: false,
   },
   {
@@ -67,20 +60,23 @@ const portals = [
     name: "DOMimmo",
     price: 0.31,
     duration: 30,
+    adsCount: 1,
     enabled: false,
   },
   {
-    id: 11,
-    name: "BureauxLocaux",
-    price: 0.94,
+    id: 7,
+    name: "Belles Demeures + Luxes Résidences",
+    price: 1.98,
     duration: 30,
+    adsCount: 1,
     enabled: false,
   },
   {
-    id: 12,
-    name: "SeLoger Bureaux & Commerces",
-    price: 0.84,
+    id: 6,
+    name: "Propriétés de France Le Figaro",
+    price: 1.41,
     duration: 30,
+    adsCount: 1,
     enabled: false,
   },
   {
@@ -88,6 +84,23 @@ const portals = [
     name: "Cession PME",
     price: 0.48,
     duration: 30,
+    adsCount: 1,
+    enabled: false,
+  },
+  {
+    id: 11,
+    name: "BureauxLocaux",
+    price: 0.94,
+    duration: 30,
+    adsCount: 1,
+    enabled: false,
+  },
+  {
+    id: 12,
+    name: "SeLoger Bureaux & Commerces",
+    price: 0.84,
+    duration: 30,
+    adsCount: 1,
     enabled: false,
   },
 ];
@@ -105,6 +118,7 @@ Object.assign(portalsFields.style, {
   display: "flex",
   flexDirection: "column",
   gap: "0.5rem",
+  marginTop: "2rem",
 });
 
 const totalPriceDiv = document.getElementById("mb_total");
@@ -120,8 +134,8 @@ const createPortalField = (portal) => {
   portalFieldDiv.id = `portal-field-${portal.id}`;
   portalFieldDiv.innerHTML = `
          <div style="display: flex; width: 100%; gap: 0.75rem">
-            <div class="field" style="width:  33.33%">
-                <label class="label">Plateforme de diffusion</label>
+            <div class="field" style="width:  30%">
+                <label class="label label-clamp">Plateforme de diffusion</label>
                 <input
                     id="portal-field-name-${portal.id}"
                     class="input"
@@ -131,8 +145,11 @@ const createPortalField = (portal) => {
                     style="background-color: #fff; color: #000"
                 />
             </div>
-            <div class="field" style="width:  33.33%">
-                <label class="label">Prix (${portal.price} € / jour)</label>
+
+            <div class="field" style="width:  23.33%">
+                <label class="label label-clamp">Prix (${
+                  portal.price
+                } € / jour)</label>
                 <input
                   id="portal-field-price-${portal.id}"
                   class="input"
@@ -142,13 +159,27 @@ const createPortalField = (portal) => {
                   disabled
                   value="${(
                     (parseInt(portal.price * 100 * portal.duration) / 100) *
-                    adsCountDiv.value
-                  ).toFixed(2)} €"
+                    portal.adsCount
+                  ).toFixed(2)} € au total"
                   style="background-color: #fff; color: #000; cursor: mouse"
                 />
             </div>
-            <div class="field" style="width:  33.33%">
-                <label class="label">Nombre de jours diffusés</label>
+
+            <div class="field" style="width:  23.33%">
+                <label class="label label-clamp">Nombre d'annonces</label>
+                <input
+                  id="portal-field-ads-count-${portal.id}"
+                  class="input"
+                  type="number"
+                  min="1"
+                  step="1"
+                  value="1"
+                  style="background-color: #fff; color: #000"
+                />
+            </div>
+            
+            <div class="field" style="width:  23.33%">
+                <label class="label label-clamp">Nombre de jours diffusés</label>
                 <input
                   id="portal-field-duration-${portal.id}"
                   class="input"
@@ -159,7 +190,6 @@ const createPortalField = (portal) => {
                   style="background-color: #fff; color: #000"
                 />
             </div>
-             
          </div>
       `;
   portalFieldDiv
@@ -172,8 +202,24 @@ const createPortalField = (portal) => {
       priceField.value =
         (
           (parseInt(portal.price * 100 * portal.duration) / 100) *
-          adsCountDiv.value
+          portal.adsCount
         ).toFixed(2) + " €";
+
+      calculateTotalPrice(portal);
+    });
+
+  portalFieldDiv
+    .querySelector(`#portal-field-ads-count-${portal.id}`)
+    .addEventListener("change", (event) => {
+      const priceField = portalFieldDiv.querySelector(
+        `#portal-field-price-${portal.id}`
+      );
+      portal.adsCount = event.target.value;
+      priceField.value =
+        (
+          (parseInt(portal.price * 100 * portal.duration) / 100) *
+          portal.adsCount
+        ).toFixed(2) + " € au total";
 
       calculateTotalPrice(portal);
     });
@@ -187,10 +233,10 @@ const calculateTotalPrice = (portal) => {
   const totalPrice = portals
     .filter((p) => p.enabled)
     .reduce((acc, p) => {
-      return acc + p.price * p.duration;
+      return acc + p.price * p.duration * p.adsCount;
     }, 0);
   totalPriceDiv.innerHTML = `
-            ${(totalPrice * adsCountDiv.value).toFixed(2)} €
+            ${totalPrice.toFixed(2)} € HT
             `;
 };
 
@@ -249,22 +295,8 @@ portals.forEach((portal) => {
     priceField.value =
       (
         (parseInt(portal.price * 100 * portal.duration) / 100) *
-        adsCountDiv.value
-      ).toFixed(2) + " €";
-
-    calculateTotalPrice(portal);
-  });
-
-  //update price on ads count change
-  adsCountDiv.addEventListener("change", (event) => {
-    const priceField = portalFieldDiv.querySelector(
-      `#portal-field-price-${portal.id}`
-    );
-    priceField.value =
-      (
-        (parseInt(portal.price * 100 * portal.duration) / 100) *
-        adsCountDiv.value
-      ).toFixed(2) + " €";
+        portal.adsCount
+      ).toFixed(2) + " € au total";
 
     calculateTotalPrice(portal);
   });
