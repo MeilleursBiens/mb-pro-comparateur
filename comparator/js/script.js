@@ -15,20 +15,16 @@ var mb_difference = 10;
 
 let isNetwork = true; // Déplacer la variable ici pour qu'elle soit globale
 
-// Fonction pour obtenir les paramètres de l'URL
-function getUrlParameter(name) {
-  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-  var results = regex.exec(location.search);
-  return results === null
-    ? ""
-    : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+// Écouter les messages du parent
+window.addEventListener("message", function (event) {
+  // Vérifier l'origine pour la sécurité
+  if (event.origin !== "https://www.meilleursbiens.pro") return;
 
-// Fonction pour pré-sélectionner un réseau depuis l'URL
-function autoSelectNetworkFromUrl() {
-  const networkName = getUrlParameter("network");
-  if (networkName && typeof reseauxList !== "undefined") {
+  if (
+    event.data.type === "selectNetwork" &&
+    typeof reseauxList !== "undefined"
+  ) {
+    const networkName = event.data.network;
     // Recherche insensible à la casse et aux espaces
     const network = reseauxList.find(
       (r) =>
@@ -37,61 +33,74 @@ function autoSelectNetworkFromUrl() {
     );
 
     if (network) {
-      // Mettre à jour les champs avec les valeurs du réseau
-      const arCommissionInput = document.getElementById("ar_commissions");
-      const arForfaitInput = document.getElementById("ar_forfait");
-      const reseauSearchInput = document.getElementById("reseauSearch");
+      // Attendre que le DOM soit complètement chargé
+      const initializeNetwork = () => {
+        const arCommissionInput = document.getElementById("ar_commissions");
+        const arForfaitInput = document.getElementById("ar_forfait");
+        const reseauSearchInput = document.getElementById("reseauSearch");
 
-      if (arCommissionInput && arForfaitInput && reseauSearchInput) {
-        // Mettre à jour les valeurs
-        arCommissionInput.value = network.commission;
-        arForfaitInput.value = network.prix_pack;
-        reseauSearchInput.value = network.name;
+        if (arCommissionInput && arForfaitInput && reseauSearchInput) {
+          // Mettre à jour les valeurs
+          arCommissionInput.value = network.commission;
+          arForfaitInput.value = network.prix_pack;
+          reseauSearchInput.value = network.name;
 
-        // Mettre à jour les variables globales
-        ar_commissions = network.commission;
-        ar_forfait = network.prix_pack;
-        isNetwork = true;
+          // Mettre à jour les variables globales
+          ar_commissions = network.commission;
+          ar_forfait = network.prix_pack;
+          isNetwork = true;
 
-        // Déclencher le calcul
-        calculate();
-        updateNetworkCostText();
-      }
+          // Déclencher le calcul
+          if (typeof calculate === "function") {
+            calculate();
+          }
+          if (typeof updateNetworkCostText === "function") {
+            updateNetworkCostText();
+          }
+        } else {
+          // Si les éléments ne sont pas encore disponibles, réessayer
+          setTimeout(initializeNetwork, 100);
+        }
+      };
+
+      // Démarrer l'initialisation
+      initializeNetwork();
     }
   }
-}
-
-// Attendre que le DOM et tous les scripts soient chargés
-window.addEventListener("load", function () {
-  // Attendre un court instant pour s'assurer que reseauxList est disponible
-  setTimeout(autoSelectNetworkFromUrl, 100);
 });
 
 // --------------------------------------------------
 // Récupération des éléments du DOM
-var ar_input_honoraires = document.querySelector("#ar_honoraires");
-var ar_input_forfait = document.querySelector("#ar_forfait");
-var ar_input_ventes = document.querySelector("#ar_ventes");
-var ar_input_commissions = document.querySelector("#ar_commissions");
-var ar_text_total = document.querySelector("#ar_total");
-var ar_text_network = document.querySelector("#ar_network");
+document.addEventListener("DOMContentLoaded", function () {
+  ar_input_honoraires = document.querySelector("#ar_honoraires");
+  ar_input_forfait = document.querySelector("#ar_forfait");
+  ar_input_ventes = document.querySelector("#ar_ventes");
+  ar_input_commissions = document.querySelector("#ar_commissions");
+  ar_text_total = document.querySelector("#ar_total");
+  ar_text_network = document.querySelector("#ar_network");
 
-var mb_input_honoraires = document.querySelector("#mb_honoraires");
-var mb_input_forfait = document.querySelector("#mb_forfait");
-var mb_input_ventes = document.querySelector("#mb_ventes");
-var mb_input_commissions = document.querySelector("#mb_commissions");
-var mb_text_total = document.querySelector("#mb_total");
-var mb_text_difference = document.querySelector("#mb_difference");
-var mb_text_total_2 = document.querySelector("#mb_total_2");
-var mb_text_difference_2 = document.querySelector("#mb_difference_2");
+  mb_input_honoraires = document.querySelector("#mb_honoraires");
+  mb_input_forfait = document.querySelector("#mb_forfait");
+  mb_input_ventes = document.querySelector("#mb_ventes");
+  mb_input_commissions = document.querySelector("#mb_commissions");
+  mb_text_total = document.querySelector("#mb_total");
+  mb_text_difference = document.querySelector("#mb_difference");
+  mb_text_total_2 = document.querySelector("#mb_total_2");
+  mb_text_difference_2 = document.querySelector("#mb_difference_2");
 
-// --------------------------------------------------
-// Ajout des écouteurs d'évènements
+  // Add event listeners only after elements are found
+  if (ar_input_honoraires)
+    ar_input_honoraires.addEventListener("input", calculate);
+  if (ar_input_forfait) ar_input_forfait.addEventListener("input", calculate);
+  if (ar_input_ventes) ar_input_ventes.addEventListener("input", calculate);
+  if (ar_input_commissions)
+    ar_input_commissions.addEventListener("input", calculate);
 
-ar_input_honoraires.addEventListener("input", calculate);
-ar_input_forfait.addEventListener("input", calculate);
-ar_input_ventes.addEventListener("input", calculate);
-ar_input_commissions.addEventListener("input", calculate);
+  // Initial calculation
+  if (typeof calculate === "function") {
+    calculate();
+  }
+});
 
 // --------------------------------------------------
 // Fonction de calcul
