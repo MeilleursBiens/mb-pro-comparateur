@@ -15,17 +15,9 @@ var mb_difference = 10;
 
 let isNetwork = true; // Déplacer la variable ici pour qu'elle soit globale
 
-// Écouter les messages du parent
-window.addEventListener("message", function (event) {
-  // Vérifier l'origine pour la sécurité
-  if (event.origin !== "https://www.meilleursbiens.pro") return;
-
-  if (
-    event.data.type === "selectNetwork" &&
-    typeof reseauxList !== "undefined"
-  ) {
-    const networkName = event.data.network;
-    // Recherche insensible à la casse et aux espaces
+// Fonction pour initialiser un réseau
+function initializeNetwork(networkName) {
+  if (typeof reseauxList !== "undefined") {
     const network = reseauxList.find(
       (r) =>
         r.name.toLowerCase().replace(/\s+/g, "") ===
@@ -33,8 +25,7 @@ window.addEventListener("message", function (event) {
     );
 
     if (network) {
-      // Attendre que le DOM soit complètement chargé
-      const initializeNetwork = () => {
+      const initializeNetworkValues = () => {
         const arCommissionInput = document.getElementById("ar_commissions");
         const arForfaitInput = document.getElementById("ar_forfait");
         const reseauSearchInput = document.getElementById("reseauSearch");
@@ -59,13 +50,25 @@ window.addEventListener("message", function (event) {
           }
         } else {
           // Si les éléments ne sont pas encore disponibles, réessayer
-          setTimeout(initializeNetwork, 100);
+          setTimeout(initializeNetworkValues, 100);
         }
       };
 
       // Démarrer l'initialisation
-      initializeNetwork();
+      initializeNetworkValues();
     }
+  }
+}
+
+// Exposer la fonction d'initialisation globalement
+window.initializeComparator = function (networkName) {
+  initializeNetwork(networkName);
+};
+
+// Écouter les messages pour la compatibilité
+window.addEventListener("message", function (event) {
+  if (event.data && event.data.network) {
+    initializeNetwork(event.data.network);
   }
 });
 
