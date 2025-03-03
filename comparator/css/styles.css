@@ -711,6 +711,13 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
 }
+.label-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 #ar_network {
   color: #bb2030;
   font-weight: bold;
@@ -812,5 +819,9 @@ span#mb_difference_2 {
   .search {
     width: 100%;
     max-width: none;
+  }
+
+  .diffusion-card {
+    padding: 0.25rem !important;
   }
 }

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="comparator/css/styles.css" />
+    <title>Simulateur de diffusion pour votre annonce | MeilleursBiens</title>
+  </head>
+  <body>
+    <div
+      class="card comparator-card diffusion-card"
+      style="
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 2px solid rgba(128, 128, 128, 0.486);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1),
+          inset 0 0 32px 0 rgba(128, 128, 128, 0.1);
+      "
+    >
+      <div class="card-content">
+
+        <p class="has-text-centered" style="font-weight: 500; font-size: 0.875rem; margin-bottom: 1rem;">
+          Sélectionnez les portails sur lesquels vous souhaitez diffuser votre annonce.
+        </p>
+
+        <div id="portals-list"></div>
+
+        <div id="portals-fields"></div>
+        
+        <div style="display: flex; justify-content: flex-end; margin-left: 2rem;">
+          <div class="field" style="width:  23.33%">
+              <label class="label">Nombre de jours diffusés (global)</label>
+              <input
+                id="portals-global-duration"
+                class="input"
+                type="number"
+                min="1"
+                step="1"
+                value="30"
+                style="background-color: #fff; color: #000"
+              />
+          </div>
+        </div>
+
+        <hr />
+
+    
+
+          <div class="column is-6" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+            <div
+              class="result-card"
+              style="
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 16px rgba(187, 32, 48, 0.15);
+                border: 1px solid #bb2030;
+                width: 100%;
+                max-width: 300px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              "
+            >
+            <span style="text-align: center; font-size: 0.875rem; font-weight: 600">Prix total payé</span>
+              <h4
+                class="title has-text-centered is-4 has-text-primary"
+                style="font-size: 30px"
+              >
+                <span id="mb_total">36.60 € / HT</span>
+              </h4>
+            </div>
+          </div>
+
+          <p class="has-text-centered" style="margin: 0.5rem 0; font-weight: 600;">
+            Chez nous, la diffusion de votre annonce sur les différents portails est facturée au prorata, vous ne payez que ce que vous consommez.
+          </p>
+
+          <p class="has-text-centered" style="margin: 0.5rem 0; font-weight: 500;">
+            Vous bénéficiez également d'une diffusion gratuite sur plus de 150 portails.
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <script src="comparator/js/scriptAds.js"></script>
+  </body>
+</html>
