@@ -15,6 +15,36 @@ var mb_difference = 10;
 
 let isNetwork = true; // Déplacer la variable ici pour qu'elle soit globale
 
+// Fonction pour obtenir les paramètres de l'URL
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+  var results = regex.exec(location.search);
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+// Fonction pour pré-sélectionner un réseau depuis l'URL
+function autoSelectNetworkFromUrl() {
+  const networkName = getUrlParameter("network");
+  if (networkName) {
+    const network = reseauxList.find(
+      (r) => r.name.toLowerCase() === networkName.toLowerCase()
+    );
+    if (network) {
+      const searchInput = document.getElementById("reseauSearch");
+      if (searchInput) {
+        searchInput.value = network.name;
+        selectReseau(network);
+      }
+    }
+  }
+}
+
+// Appeler la fonction après le chargement du DOM
+document.addEventListener("DOMContentLoaded", autoSelectNetworkFromUrl);
+
 // --------------------------------------------------
 // Récupération des éléments du DOM
 var ar_input_honoraires = document.querySelector("#ar_honoraires");
