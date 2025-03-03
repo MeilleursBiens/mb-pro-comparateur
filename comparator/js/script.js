@@ -28,22 +28,44 @@ function getUrlParameter(name) {
 // Fonction pour pré-sélectionner un réseau depuis l'URL
 function autoSelectNetworkFromUrl() {
   const networkName = getUrlParameter("network");
-  if (networkName) {
+  if (networkName && typeof reseauxList !== "undefined") {
+    // Recherche insensible à la casse et aux espaces
     const network = reseauxList.find(
-      (r) => r.name.toLowerCase() === networkName.toLowerCase()
+      (r) =>
+        r.name.toLowerCase().replace(/\s+/g, "") ===
+        networkName.toLowerCase().replace(/\s+/g, "")
     );
+
     if (network) {
-      const searchInput = document.getElementById("reseauSearch");
-      if (searchInput) {
-        searchInput.value = network.name;
-        selectReseau(network);
+      // Mettre à jour les champs avec les valeurs du réseau
+      const arCommissionInput = document.getElementById("ar_commissions");
+      const arForfaitInput = document.getElementById("ar_forfait");
+      const reseauSearchInput = document.getElementById("reseauSearch");
+
+      if (arCommissionInput && arForfaitInput && reseauSearchInput) {
+        // Mettre à jour les valeurs
+        arCommissionInput.value = network.commission;
+        arForfaitInput.value = network.prix_pack;
+        reseauSearchInput.value = network.name;
+
+        // Mettre à jour les variables globales
+        ar_commissions = network.commission;
+        ar_forfait = network.prix_pack;
+        isNetwork = true;
+
+        // Déclencher le calcul
+        calculate();
+        updateNetworkCostText();
       }
     }
   }
 }
 
-// Appeler la fonction après le chargement du DOM
-document.addEventListener("DOMContentLoaded", autoSelectNetworkFromUrl);
+// Attendre que le DOM et tous les scripts soient chargés
+window.addEventListener("load", function () {
+  // Attendre un court instant pour s'assurer que reseauxList est disponible
+  setTimeout(autoSelectNetworkFromUrl, 100);
+});
 
 // --------------------------------------------------
 // Récupération des éléments du DOM
