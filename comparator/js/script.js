@@ -13,7 +13,24 @@ var mb_commissions = 100;
 var mb_total = 70502;
 var mb_difference = 10;
 
-let isNetwork = true; // Déplacer la variable ici pour qu'elle soit globale
+// Variables pour les éléments du DOM
+var ar_input_honoraires;
+var ar_input_forfait;
+var ar_input_ventes;
+var ar_input_commissions;
+var ar_text_total;
+var ar_text_network;
+
+var mb_input_honoraires;
+var mb_input_forfait;
+var mb_input_ventes;
+var mb_input_commissions;
+var mb_text_total;
+var mb_text_difference;
+var mb_text_total_2;
+var mb_text_difference_2;
+
+let isNetwork = true;
 
 // Fonction pour initialiser un réseau
 function initializeNetwork(networkName) {
@@ -91,28 +108,61 @@ document.addEventListener("DOMContentLoaded", function () {
   mb_text_total_2 = document.querySelector("#mb_total_2");
   mb_text_difference_2 = document.querySelector("#mb_difference_2");
 
+  // Ajouter l'écouteur d'événement pour le bouton de comparaison
+  const compareButton = document.querySelector("#compareButton");
+  const resultsSection = document.querySelector("#resultsSection");
+
+  if (compareButton && resultsSection) {
+    // Ajouter l'effet de hover
+    compareButton.addEventListener("mouseover", function () {
+      this.style.backgroundColor = "#a11d2a";
+    });
+    compareButton.addEventListener("mouseout", function () {
+      this.style.backgroundColor = "#bb2030";
+    });
+
+    // Gérer le clic
+    compareButton.addEventListener("click", function (e) {
+      e.preventDefault(); // Empêcher tout comportement par défaut
+      calculate(); // Forcer le recalcul
+      resultsSection.style.display = "block"; // Afficher la section des résultats
+      setTimeout(() => {
+        resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    });
+  }
+
+  // Cacher la section des résultats au chargement
+  if (resultsSection) {
+    resultsSection.style.display = "none";
+  }
+
   // Add event listeners only after elements are found
-  if (ar_input_honoraires)
+  if (ar_input_honoraires) {
     ar_input_honoraires.addEventListener("input", calculate);
-  if (ar_input_forfait) ar_input_forfait.addEventListener("input", calculate);
-  if (ar_input_ventes) ar_input_ventes.addEventListener("input", calculate);
-  if (ar_input_commissions)
+  }
+  if (ar_input_forfait) {
+    ar_input_forfait.addEventListener("input", calculate);
+  }
+  if (ar_input_ventes) {
+    ar_input_ventes.addEventListener("input", calculate);
+  }
+  if (ar_input_commissions) {
     ar_input_commissions.addEventListener("input", calculate);
+  }
 
   // Initial calculation
-  if (typeof calculate === "function") {
-    calculate();
-  }
+  calculate();
 });
 
 // --------------------------------------------------
 // Fonction de calcul
 function calculate() {
   // Récupérer les valeurs actuelles
-  let honoraires = parseFloat(ar_input_honoraires.value) || 0;
-  let forfait = parseFloat(ar_input_forfait.value) || 0;
-  let ventes = parseFloat(ar_input_ventes.value) || 0;
-  let commissions = parseFloat(ar_input_commissions.value) || 0;
+  let honoraires = parseFloat(ar_input_honoraires?.value) || ar_honoraires;
+  let forfait = parseFloat(ar_input_forfait?.value) || ar_forfait;
+  let ventes = parseFloat(ar_input_ventes?.value) || ar_ventes;
+  let commissions = parseFloat(ar_input_commissions?.value) || ar_commissions;
 
   // Calcul situation actuelle
   let resultNormal = Math.round(
@@ -128,41 +178,23 @@ function calculate() {
   // Calculer la différence
   let difference = resultMB - resultNormal;
 
+  // Calculer le coût total du réseau
+  let networkCost = honoraires - resultNormal;
+
   // Mettre à jour les affichages
-  ar_text_total.innerHTML = formatPrice(resultNormal);
-  mb_text_total.innerHTML = formatPrice(resultMB);
-  mb_text_difference.innerHTML = formatPrice(Math.abs(difference));
-
-  // Mettre à jour le texte de la différence
-  const differenceText = document.querySelector(".has-text-danger");
-  if (differenceText) {
-    if (difference > 0) {
-      differenceText.innerHTML = `Votre situation vous fait perdre <span id="mb_difference">${formatPrice(
-        difference
-      )}</span> / an`;
-    } else {
-      differenceText.innerHTML = `Votre situation vous fait gagner <span id="mb_difference">${formatPrice(
-        Math.abs(difference)
-      )}</span> / an`;
-    }
-  }
-
-  // Synchroniser les champs honoraires
-  mb_input_honoraires.value = honoraires;
-  mb_honoraires = honoraires;
-
-  // Synchroniser les champs ventes
-  mb_input_ventes.value = ventes;
-  mb_ventes = ventes;
+  if (ar_text_total) ar_text_total.innerHTML = formatPrice(resultNormal);
+  if (mb_text_total) mb_text_total.innerHTML = formatPrice(resultMB);
+  if (mb_text_difference)
+    mb_text_difference.innerHTML = formatPrice(networkCost);
 
   // Mettre à jour les autres variables
   ar_total = resultNormal;
-  ar_network = honoraires - resultNormal;
+  ar_network = networkCost;
   mb_difference = resultMB - resultNormal;
   mb_total = resultMB;
 
   // Mettre à jour les textes de réseau
-  ar_text_network.innerHTML = formatPrice(ar_network);
+  if (ar_text_network) ar_text_network.innerHTML = formatPrice(ar_network);
   updateNetworkCostText();
 }
 
@@ -191,7 +223,7 @@ function updateNetworkCostText() {
   const networkCostText = document.getElementById("network-cost-text");
   const situationType = document.getElementById("situation-type");
   if (networkCostText && situationType) {
-    networkCostText.textContent = "vous coûte";
+    networkCostText.textContent = "";
     situationType.textContent = isNetwork ? "Votre réseau" : "Votre agence";
   }
 }
