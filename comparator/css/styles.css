@@ -976,19 +976,22 @@ span#mb_difference_2 {
 }
 
 .difference-amount {
-  color: #bb2230;
-  font-size: 40px;
   font-weight: 700;
-  line-height: 1;
+  font-size: 1.5rem;
+  color: #bb2230;
+  margin: 0 0.25rem;
 }
 
 .flex-center {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  line-height: 1;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+.flex-center span {
+  white-space: nowrap;
 }
 
 .mb-2 {
@@ -1102,4 +1105,59 @@ span#mb_difference_2 {
   transform: translateY(-10px);
   animation: slideDown 0.3s ease forwards;
   animation-delay: 0.3s;
+}
+
+.cost-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cost-text {
+  color: #bb2230;
+  font-size: 1.25rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.cost-amount {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.difference-amount {
+  color: #bb2230;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cost-period {
+  color: #bb2230;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .cost-display {
+    gap: 0.5rem;
+  }
+
+  .cost-text {
+    font-size: 1rem;
+  }
+
+  .difference-amount {
+    font-size: 2rem;
+  }
+
+  .cost-period {
+    font-size: 1rem;
+  }
 }
