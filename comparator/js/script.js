@@ -125,10 +125,18 @@ document.addEventListener("DOMContentLoaded", function () {
     compareButton.addEventListener("click", function (e) {
       e.preventDefault(); // Empêcher tout comportement par défaut
       calculate(); // Forcer le recalcul
-      resultsSection.style.display = "block"; // Afficher la section des résultats
+      const container = document.querySelector(".comparator-container");
+
+      // Reset animations
+      resultsSection.style.display = "none";
+      resultsSection.style.opacity = "0";
+      resultsSection.classList.remove("visible");
+
+      // Trigger animations
       setTimeout(() => {
-        resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
+        resultsSection.style.display = "block";
+        resultsSection.classList.add("visible");
+      }, 50);
     });
   }
 

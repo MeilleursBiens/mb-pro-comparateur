@@ -824,4 +824,229 @@ span#mb_difference_2 {
   .diffusion-card {
     padding: 0.25rem !important;
   }
+
+  .buttons-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .button-primary,
+  .button-outline {
+    width: 100%;
+    min-width: unset;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .text-link {
+    margin-bottom: 0.5rem;
+  }
+
+  .buttons-container {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+/* Styles pour les boutons et conteneurs */
+.comparator-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(128, 128, 128, 0.486);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 32px 0 rgba(128, 128, 128, 0.1);
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.buttons-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.text-link {
+  color: #363636;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.button-primary {
+  background-color: #bb2030;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  flex: 0 1 auto;
+  min-width: 200px;
+  max-width: 300px;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #a11d2a;
+}
+
+.button-outline {
+  background-color: #fff;
+  border: 2px solid #bb2030;
+  color: #bb2030;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  flex: 0 1 auto;
+  min-width: 200px;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-outline:hover {
+  background-color: #bb2030;
+  color: #fff;
+}
+
+.result-card-normal {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e6eb;
+}
+
+.result-card-primary {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(187, 32, 48, 0.15);
+  border: 1px solid #bb2030;
+}
+
+.text-large {
+  font-size: 30px;
+}
+
+.text-medium {
+  font-size: 20px;
+}
+
+.text-small {
+  font-size: 14px;
+}
+
+.difference-amount {
+  color: #bb2230;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.flex-center {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  line-height: 1;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .buttons-row {
+    gap: 0.5rem;
+  }
+
+  .button-primary,
+  .button-outline {
+    flex: 1 1 100%;
+    min-width: unset;
+    max-width: none;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* ======================================================== */
+/*                        Animations                          */
+/* ======================================================== */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card.comparator-container {
+  transition: all 0.3s ease;
+  min-height: 600px;
+}
+
+#resultsSection {
+  display: none;
+  opacity: 0;
+}
+
+#resultsSection.visible {
+  display: block;
+  animation: slideDown 0.3s ease forwards;
+}
+
+.result-card-normal,
+.result-card-primary {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: slideDown 0.3s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.result-card-primary {
+  animation-delay: 0.2s;
+}
+
+.buttons-container {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: slideDown 0.3s ease forwards;
+  animation-delay: 0.3s;
 }
