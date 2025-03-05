@@ -1,3 +1,20 @@
+// Function to send height to parent window
+function sendHeight() {
+  const height = document.documentElement.scrollHeight;
+  window.parent.postMessage(height, "*");
+}
+
+// Send height when page loads
+window.addEventListener("load", sendHeight);
+
+// Send height when window resizes
+window.addEventListener("resize", sendHeight);
+
+// Send height after calculations and animations
+function updateHeightAfterChanges() {
+  setTimeout(sendHeight, 100); // Small delay to ensure animations are complete
+}
+
 // Initialisation des variables
 var ar_honoraires = 75000;
 var ar_forfait = 150;
@@ -136,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => {
         resultsSection.style.display = "block";
         resultsSection.classList.add("visible");
+        updateHeightAfterChanges(); // Add height update after animation
       }, 50);
     });
   }
@@ -204,6 +222,7 @@ function calculate() {
   // Mettre à jour les textes de réseau
   if (ar_text_network) ar_text_network.innerHTML = formatPrice(ar_network);
   updateNetworkCostText();
+  updateHeightAfterChanges(); // Add height update after calculations
 }
 
 // --------------------------------------------------

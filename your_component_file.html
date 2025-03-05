@@ -1,0 +1,22 @@
+<div>
+  <iframe
+    id="comparator-frame"
+    width="100%"
+    src="https://meilleursbiens.github.io/mb-pro-comparateur/"
+    scrolling="no"
+    frameborder="0"
+    onload="resizeIframe(this)"
+  ></iframe>
+</div>
+<script>
+  function resizeIframe(iframe) {
+    // Listen for messages from the iframe content
+    window.addEventListener("message", function (event) {
+      // Make sure the message is from your iframe
+      if (event.origin === "https://meilleursbiens.github.io") {
+        // Set the height of the iframe to the content height
+        iframe.style.height = event.data + "px";
+      }
+    });
+  }
+</script>
