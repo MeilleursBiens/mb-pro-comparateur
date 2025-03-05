@@ -870,6 +870,14 @@ span#mb_difference_2 {
     inset 0 0 32px 0 rgba(128, 128, 128, 0.1);
 }
 
+/* Add styles for iframe container */
+.iframe-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
 .buttons-container {
   display: flex;
   flex-direction: column;
@@ -1040,6 +1048,10 @@ span#mb_difference_2 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .iframe-container {
+    padding: 0 1rem;
   }
 }
 

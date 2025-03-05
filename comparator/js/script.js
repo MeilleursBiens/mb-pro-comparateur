@@ -5,15 +5,43 @@ function sendHeight() {
 }
 
 // Send height when page loads
-window.addEventListener("load", sendHeight);
+window.addEventListener("load", function () {
+  sendHeight();
+  // Send height again after a short delay to account for dynamic content
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+  setTimeout(sendHeight, 1000);
+});
 
 // Send height when window resizes
-window.addEventListener("resize", sendHeight);
+window.addEventListener("resize", function () {
+  sendHeight();
+  // Debounce the resize event
+  clearTimeout(window.resizeTimer);
+  window.resizeTimer = setTimeout(sendHeight, 250);
+});
 
 // Send height after calculations and animations
 function updateHeightAfterChanges() {
-  setTimeout(sendHeight, 100); // Small delay to ensure animations are complete
+  sendHeight();
+  // Send multiple updates to ensure proper height
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 300);
+  setTimeout(sendHeight, 500);
 }
+
+// Create a MutationObserver to watch for DOM changes
+const observer = new MutationObserver(function (mutations) {
+  updateHeightAfterChanges();
+});
+
+// Start observing the document with the configured parameters
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+  attributes: true,
+  characterData: true,
+});
 
 // Initialisation des variables
 var ar_honoraires = 75000;
