@@ -232,6 +232,16 @@ function calculate() {
   // Calculer la différence
   let difference = resultMB - resultNormal;
 
+  // Calculer le pourcentage d'augmentation
+  let percentageIncrease = (
+    ((resultMB - resultNormal) / resultNormal) *
+    100
+  ).toFixed(1);
+  const percentageElement = document.getElementById("percentage_increase");
+  if (percentageElement) {
+    percentageElement.textContent = percentageIncrease;
+  }
+
   // Calculer le coût total du réseau
   let networkCost = honoraires - resultNormal;
 

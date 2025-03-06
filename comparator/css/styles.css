@@ -975,6 +975,19 @@ span#mb_difference_2 {
   font-size: 14px;
 }
 
+.result-line {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.percentage-text {
+  font-size: 0.875em;
+  display: inline-flex;
+  align-items: baseline;
+  margin-left: 2px;
+}
+
 .difference-amount {
   font-weight: 700;
   font-size: 1.5rem;
