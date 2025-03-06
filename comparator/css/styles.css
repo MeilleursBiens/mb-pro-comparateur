@@ -1092,32 +1092,16 @@ span#mb_difference_2 {
 }
 
 #resultsSection {
-  display: none;
-  opacity: 0;
-}
-
-#resultsSection.visible {
-  display: block;
-  animation: slideDown 0.3s ease forwards;
+  opacity: 1;
 }
 
 .result-card-normal,
 .result-card-primary {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: slideDown 0.3s ease forwards;
-  animation-delay: 0.1s;
-}
-
-.result-card-primary {
-  animation-delay: 0.2s;
+  opacity: 1;
 }
 
 .buttons-container {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: slideDown 0.3s ease forwards;
-  animation-delay: 0.3s;
+  opacity: 1;
 }
 
 .cost-display {

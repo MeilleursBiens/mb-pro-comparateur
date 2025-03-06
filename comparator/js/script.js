@@ -153,44 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
   mb_text_total_2 = document.querySelector("#mb_total_2");
   mb_text_difference_2 = document.querySelector("#mb_difference_2");
 
-  // Ajouter l'écouteur d'événement pour le bouton de comparaison
-  const compareButton = document.querySelector("#compareButton");
-  const resultsSection = document.querySelector("#resultsSection");
-
-  if (compareButton && resultsSection) {
-    // Ajouter l'effet de hover
-    compareButton.addEventListener("mouseover", function () {
-      this.style.backgroundColor = "#a11d2a";
-    });
-    compareButton.addEventListener("mouseout", function () {
-      this.style.backgroundColor = "#bb2030";
-    });
-
-    // Gérer le clic
-    compareButton.addEventListener("click", function (e) {
-      e.preventDefault(); // Empêcher tout comportement par défaut
-      calculate(); // Forcer le recalcul
-      const container = document.querySelector(".comparator-container");
-
-      // Reset animations
-      resultsSection.style.display = "none";
-      resultsSection.style.opacity = "0";
-      resultsSection.classList.remove("visible");
-
-      // Trigger animations
-      setTimeout(() => {
-        resultsSection.style.display = "block";
-        resultsSection.classList.add("visible");
-        updateHeightAfterChanges(); // Add height update after animation
-      }, 50);
-    });
-  }
-
-  // Cacher la section des résultats au chargement
-  if (resultsSection) {
-    resultsSection.style.display = "none";
-  }
-
   // Add event listeners only after elements are found
   if (ar_input_honoraires) {
     ar_input_honoraires.addEventListener("input", calculate);
@@ -260,7 +222,6 @@ function calculate() {
   // Mettre à jour les textes de réseau
   if (ar_text_network) ar_text_network.innerHTML = formatPrice(ar_network);
   updateNetworkCostText();
-  updateHeightAfterChanges(); // Add height update after calculations
 }
 
 // --------------------------------------------------
