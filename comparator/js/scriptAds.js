@@ -1,7 +1,7 @@
 const portals = [
   {
     id: 1,
-    name: "Leboncoin + À Vendre À Louer",
+    name: "Leboncoin - À Vendre À Louer",
     price: 0.37,
     duration: 30,
     adsCount: 1,
@@ -9,7 +9,7 @@ const portals = [
   },
   {
     id: 2,
-    name: "SeLoger + Logic-Immo",
+    name: "SeLoger - Logic-Immo",
     price: 0.63,
     duration: 30,
     adsCount: 1,
@@ -65,7 +65,7 @@ const portals = [
   },
   {
     id: 7,
-    name: "Belles Demeures + Luxes Résidences",
+    name: "Belles Demeures - Lux Résidences",
     price: 1.98,
     duration: 30,
     adsCount: 1,
@@ -169,7 +169,7 @@ const createPortalField = (portal) => {
                 <label class="label label-clamp">Nombre d'annonces</label>
                 <input
                   id="portal-field-ads-count-${portal.id}"
-                  class="input"
+                  class="input input-number"
                   type="number"
                   min="1"
                   step="1"
@@ -182,7 +182,7 @@ const createPortalField = (portal) => {
                 <label class="label label-clamp">Nombre de jours diffusés</label>
                 <input
                   id="portal-field-duration-${portal.id}"
-                  class="input"
+                  class="input input-number"
                   type="number"
                   min="1"
                   step="1"
@@ -203,7 +203,7 @@ const createPortalField = (portal) => {
         (
           (parseInt(portal.price * 100 * portal.duration) / 100) *
           portal.adsCount
-        ).toFixed(2) + " €";
+        ).toFixed(2) + " € au total";
 
       calculateTotalPrice(portal);
     });
