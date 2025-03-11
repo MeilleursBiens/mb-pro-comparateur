@@ -14,26 +14,14 @@
     <title>Comparateur de Revenus | MeilleursBiens</title>
   </head>
   <body>
-    <div
-      class="card comparator-card"
-      style="
-        max-width: 800px;
-        margin: 2rem auto;
-        padding: 2rem;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 2px solid rgba(128, 128, 128, 0.486);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1),
-          inset 0 0 32px 0 rgba(128, 128, 128, 0.1);
-      "
-    >
+    <div class="card comparator-container">
       <div class="card-content">
         <!-- Champs principaux -->
         <div class="field">
-          <label class="label"
-            >Honoraires annuels HT
-            <span class="has-text-primary">(en €)</span></label
-          >
+          <label class="label">
+            Honoraires annuels HT
+            <span class="has-text-primary">(en €)</span>
+          </label>
           <div class="control">
             <input
               id="ar_honoraires"
@@ -93,7 +81,7 @@
         </div>
 
         <!-- Texte explicatif -->
-        <p class="has-text-centered" style="margin: 0.5rem 0">
+        <p class="has-text-centered mt-1">
           Les chiffres des réseaux et des agences peuvent être différents de la
           réalité, vous pouvez les adapter manuellement juste en dessous
         </p>
@@ -102,10 +90,10 @@
         <div class="columns">
           <div class="column is-6">
             <div class="field">
-              <label class="label"
-                >Forfait mensuel d'adhésion HT
-                <span class="has-text-primary">(en €/mois)</span></label
-              >
+              <label class="label">
+                Forfait mensuel d'adhésion HT
+                <span class="has-text-primary">(en €/mois)</span>
+              </label>
               <div class="control">
                 <input
                   id="ar_forfait"
@@ -120,10 +108,10 @@
           </div>
           <div class="column is-6">
             <div class="field">
-              <label class="label"
-                >Commissions perçues sur les ventes
-                <span class="has-text-primary">(en %)</span></label
-              >
+              <label class="label">
+                Commissions perçues sur les ventes
+                <span class="has-text-primary">(en %)</span>
+              </label>
               <div class="control">
                 <input
                   id="ar_commissions"
@@ -138,78 +126,58 @@
           </div>
         </div>
 
-        <hr />
+        <!-- Section des résultats -->
+        <div id="resultsSection">
+          <hr />
 
-        <!-- Résultats en 2 colonnes -->
-        <div class="columns">
-          <div class="column is-6">
-            <div
-              class="result-card"
-              style="
-                background: white;
-                border-radius: 12px;
-                padding: 1.5rem;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-                border: 1px solid #e1e6eb;
-              "
-            >
-              <h4 class="title has-text-centered is-4" style="font-size: 30px">
-                <span id="ar_total">52.200€</span> <small>/an</small>
-              </h4>
-              <h5
-                class="subtitle has-text-centered is-5"
-                style="font-size: 14px"
-              >
-                <span id="situation-type">Votre situation</span>
-              </h5>
+          <!-- Résultats en 2 colonnes -->
+          <div class="columns">
+            <div class="column is-6">
+              <div class="result-card-normal">
+                <h4 class="title has-text-centered is-4 text-large">
+                  <span id="ar_total">52.200€</span> <small>/an</small>
+                </h4>
+                <h5 class="subtitle has-text-centered is-5 text-small">
+                  <span id="situation-type">Votre situation</span>
+                </h5>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div class="result-card-primary">
+                <h4
+                  class="title has-text-centered is-4 has-text-primary text-large"
+                >
+                  <div class="result-line">
+                    <span id="mb_total">75.000€</span
+                    ><small class="has-text-primary">/an</small
+                    ><span class="percentage-text has-text-primary"
+                      >(+<span id="percentage_increase">43.7</span>%)</span
+                    >
+                  </div>
+                </h4>
+                <h5 class="subtitle has-text-centered is-5 text-small">
+                  Avec MeilleursBiens
+                </h5>
+              </div>
             </div>
           </div>
-          <div class="column is-6">
-            <div
-              class="result-card"
-              style="
-                background: white;
-                border-radius: 12px;
-                padding: 1.5rem;
-                box-shadow: 0 4px 16px rgba(187, 32, 48, 0.15);
-                border: 1px solid #bb2030;
-              "
-            >
-              <h4
-                class="title has-text-centered is-4 has-text-primary"
-                style="font-size: 30px"
-              >
-                <span id="mb_total">75.000€</span>
-                <small class="has-text-primary">/an</small>
-              </h4>
-              <h5
-                class="subtitle has-text-centered is-5"
-                style="font-size: 14px"
-              >
-                Avec MeilleursBiens
-              </h5>
-            </div>
-          </div>
-        </div>
 
-        <div class="has-text-centered" style="margin-top: 1rem">
-          <h3
-            class="has-text-primary"
-            style="font-weight: bold; font-size: 20px"
-          >
-            Votre situation vous fait perdre
-            <span id="mb_difference" style="color: #bb2230 !important"
-              >22.800€</span
-            >
-            / an
-          </h3>
-          <p style="font-weight: bold">
-            Chez nous c'est simple,
-            <span style="color: #bb2230 !important">199€/mois</span> pour gagner
-            <span style="color: #bb2230 !important"
-              >100% de vos commissions</span
-            >
-          </p>
+          <div class="has-text-centered mt-1">
+            <div class="cost-display">
+              <div class="cost-text">Votre situation vous coûte</div>
+              <div class="cost-amount">
+                <span id="mb_difference" class="difference-amount"
+                  >22.800€</span
+                >
+                <span class="cost-period">/ an</span>
+              </div>
+            </div>
+            <p class="mb-2 has-text-weight-bold">
+              Chez nous c'est simple,
+              <span class="has-text-primary">199€/mois</span> pour gagner
+              <span class="has-text-primary">100% de vos commissions</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

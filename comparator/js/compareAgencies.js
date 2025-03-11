@@ -3,7 +3,6 @@ let agenciesList = [
   { name: "Century 21", commission: 35 }, // Commission standard réseau
   { name: "Laforêt", commission: 40 }, // Variable selon franchises
   { name: "Orpi", commission: 38 }, // Moyenne réseau
-  { name: "Guy Hoquet", commission: 35 }, // Fixé par le réseau
   { name: "ERA Immobilier", commission: 40 },
   { name: "Stéphane Plaza", commission: 35 },
   { name: "Foncia", commission: 35 },
