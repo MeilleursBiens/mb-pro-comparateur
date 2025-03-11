@@ -327,4 +327,6 @@ function sendHeight() {
 }
 
 window.onload = sendHeight;
-window.onresize = sendHeight;
+
+const resizeObserver = new ResizeObserver(() => sendHeight());
+resizeObserver.observe(document.body);
