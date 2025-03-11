@@ -168,12 +168,13 @@ const createPortalField = (portal) => {
             </div>
             
             <div class="field" style="width:  23.33%">
-                <label class="label label-clamp">Nombre de jours diffusés</label>
+                <label class="label label-clamp">Nb de jours diffusés/mois</label>
                 <input
                   id="portal-field-duration-${portal.id}"
                   class="input input-number"
                   type="number"
                   min="1"
+                  max="31"
                   step="1"
                   value="30"
                   style="background-color: #fff; color: #000"
@@ -244,7 +245,9 @@ const calculateTotalPrice = (portal) => {
       return acc + p.price * p.duration * p.adsCount;
     }, 0);
   totalPriceDiv.innerHTML = `
-            ${totalPrice.toFixed(2)} € HT
+            <div><span>${totalPrice.toFixed(
+              2
+            )} €</span> <small class="percentage-text"> HT / mois</small></div>
             `;
 };
 
