@@ -318,3 +318,13 @@ portals.forEach((portal) => {
   portalItem.appendChild(label);
   portalsList.appendChild(portalItem);
 });
+
+function sendHeight() {
+  parent.postMessage(
+    document.body.scrollHeight,
+    "https://www.meilleursbiens.pro"
+  );
+}
+
+window.onload = sendHeight;
+window.onresize = sendHeight;
