@@ -5,7 +5,7 @@ const portals = [
     price: 0.37,
     duration: 30,
     adsCount: 1,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const portals = [
     price: 0.63,
     duration: 30,
     adsCount: 1,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 3,
@@ -129,6 +129,12 @@ const portalsGlobalDuration = document.getElementById(
 
 const adsCountDiv = document.getElementById("ads-count");
 
+const adsDurationGlobalDiv = document.getElementById(
+  "ads-diffusion-days-global"
+);
+
+const totalPriceCard = document.getElementById("ads-diffusion-total-price");
+
 const createPortalField = (portal) => {
   const portalFieldDiv = document.createElement("div");
   portalFieldDiv.id = `portal-field-${portal.id}`;
@@ -146,24 +152,7 @@ const createPortalField = (portal) => {
                 />
             </div>
 
-            <div class="field" style="width:  23.33%">
-                <label class="label label-clamp">Prix (${
-                  portal.price
-                } € / jour)</label>
-                <input
-                  id="portal-field-price-${portal.id}"
-                  class="input"
-                  type="text"
-                  min="1"
-                  step="1"
-                  disabled
-                  value="${(
-                    (parseInt(portal.price * 100 * portal.duration) / 100) *
-                    portal.adsCount
-                  ).toFixed(2)} € au total"
-                  style="background-color: #fff; color: #000; cursor: mouse"
-                />
-            </div>
+
 
             <div class="field" style="width:  23.33%">
                 <label class="label label-clamp">Nombre d'annonces</label>
@@ -190,6 +179,25 @@ const createPortalField = (portal) => {
                   style="background-color: #fff; color: #000"
                 />
             </div>
+
+            <div class="field" style="width:  23.33%">
+              <label class="label label-clamp">Prix (${
+                portal.price
+              } € / jour)</label>
+              <input
+                id="portal-field-price-${portal.id}"
+                class="input"
+                type="text"
+                min="1"
+                step="1"
+                disabled
+                value="${(
+                  (parseInt(portal.price * 100 * portal.duration) / 100) *
+                  portal.adsCount
+                ).toFixed(2)} € au total"
+                style="background-color: #fff; color: #000; cursor: mouse"
+              />
+          </div>
          </div>
       `;
   portalFieldDiv
@@ -240,6 +248,18 @@ const calculateTotalPrice = (portal) => {
             `;
 };
 
+const uiVisibility = () => {
+  const portalsEnabled = portals.filter((portal) => portal.enabled);
+
+  if (portalsEnabled.length > 0) {
+    adsDurationGlobalDiv.classList.remove("is-hidden");
+    totalPriceCard.classList.remove("is-hidden");
+  } else {
+    adsDurationGlobalDiv.classList.add("is-hidden");
+    totalPriceCard.classList.add("is-hidden");
+  }
+};
+
 portals.forEach((portal) => {
   const portalItem = document.createElement("div");
 
@@ -261,6 +281,7 @@ portals.forEach((portal) => {
   //update total price on price change
   input.addEventListener("change", (event) => {
     portal.enabled = event.target.checked;
+    uiVisibility();
     Object.assign(label.style, {
       border: portal.enabled ? "1px solid #bb2030" : "1px solid #e1e6eb",
       color: portal.enabled ? "#bb2030" : "#4a4a4a",
