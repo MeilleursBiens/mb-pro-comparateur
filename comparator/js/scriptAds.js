@@ -109,6 +109,7 @@ const portalsList = document.getElementById("portals-list");
 Object.assign(portalsList.style, {
   display: "flex",
   flexDirection: "row",
+  justifyContent: "center",
   flexWrap: "wrap",
   gap: "10px",
 });
