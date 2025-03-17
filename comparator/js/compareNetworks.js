@@ -2,6 +2,7 @@ let reseauxList = [
   { name: "iad France", commission: 69, prix_pack: 163 },
   { name: "Safti", commission: 70, prix_pack: 159 },
   { name: "BSK Immobilier", commission: 75, prix_pack: 125 },
+  { name: "Propriétés Privées", commission: 70, prix_pack: 169 },
   { name: "Capifrance", commission: 73, prix_pack: 169 },
   { name: "Efficity", commission: 70, prix_pack: 105 },
   { name: "Optimhome", commission: 60, prix_pack: 29 },
