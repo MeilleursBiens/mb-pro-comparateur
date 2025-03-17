@@ -1158,3 +1158,26 @@ span#mb_difference_2 {
     font-size: 1rem;
   }
 }
+
+.input-number::-webkit-inner-spin-button,
+.input-number::-webkit-outer-spin-button {
+  opacity: 1;
+}
+.input-number::-webkit-outer-spin-button {
+  margin-right: -0.75rem;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc; /* Thicker border for bigger buttons */
+  border-radius: 20px; /* Rounded corners */
+  padding: 1px; /* Makes the button larger */
+  width: 32px; /* Adjusts the width of the spinner */
+  height: 32px; /* Adjusts the height of the spinner */
+}
+.input-number::-webkit-inner-spin-button {
+  margin-right: -0.75rem;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc; /* Thicker border for bigger buttons */
+  border-radius: 20px; /* Rounded corners */
+  padding: 1px; /* Makes the button larger */
+  width: 32px; /* Adjusts the width of the spinner */
+  height: 32px; /* Adjusts the height of the spinner */
+}

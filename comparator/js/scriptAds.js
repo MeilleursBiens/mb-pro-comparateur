@@ -1,19 +1,19 @@
 const portals = [
   {
     id: 1,
-    name: "Leboncoin + À Vendre À Louer",
+    name: "Leboncoin - À Vendre À Louer",
     price: 0.37,
     duration: 30,
     adsCount: 1,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 2,
-    name: "SeLoger + Logic-Immo",
+    name: "SeLoger - Logic-Immo",
     price: 0.63,
     duration: 30,
     adsCount: 1,
-    enabled: true,
+    enabled: false,
   },
   {
     id: 3,
@@ -65,7 +65,7 @@ const portals = [
   },
   {
     id: 7,
-    name: "Belles Demeures + Luxes Résidences",
+    name: "Belles Demeures - Lux Résidences",
     price: 1.98,
     duration: 30,
     adsCount: 1,
@@ -109,6 +109,7 @@ const portalsList = document.getElementById("portals-list");
 Object.assign(portalsList.style, {
   display: "flex",
   flexDirection: "row",
+  justifyContent: "center",
   flexWrap: "wrap",
   gap: "10px",
 });
@@ -129,6 +130,12 @@ const portalsGlobalDuration = document.getElementById(
 
 const adsCountDiv = document.getElementById("ads-count");
 
+const adsDurationGlobalDiv = document.getElementById(
+  "ads-diffusion-days-global"
+);
+
+const totalPriceCard = document.getElementById("ads-diffusion-total-price");
+
 const createPortalField = (portal) => {
   const portalFieldDiv = document.createElement("div");
   portalFieldDiv.id = `portal-field-${portal.id}`;
@@ -146,30 +153,13 @@ const createPortalField = (portal) => {
                 />
             </div>
 
-            <div class="field" style="width:  23.33%">
-                <label class="label label-clamp">Prix (${
-                  portal.price
-                } € / jour)</label>
-                <input
-                  id="portal-field-price-${portal.id}"
-                  class="input"
-                  type="text"
-                  min="1"
-                  step="1"
-                  disabled
-                  value="${(
-                    (parseInt(portal.price * 100 * portal.duration) / 100) *
-                    portal.adsCount
-                  ).toFixed(2)} € au total"
-                  style="background-color: #fff; color: #000; cursor: mouse"
-                />
-            </div>
+
 
             <div class="field" style="width:  23.33%">
                 <label class="label label-clamp">Nombre d'annonces</label>
                 <input
                   id="portal-field-ads-count-${portal.id}"
-                  class="input"
+                  class="input input-number"
                   type="number"
                   min="1"
                   step="1"
@@ -179,17 +169,37 @@ const createPortalField = (portal) => {
             </div>
             
             <div class="field" style="width:  23.33%">
-                <label class="label label-clamp">Nombre de jours diffusés</label>
+                <label class="label label-clamp">Nb de jours diffusés/mois</label>
                 <input
                   id="portal-field-duration-${portal.id}"
-                  class="input"
+                  class="input input-number"
                   type="number"
                   min="1"
+                  max="31"
                   step="1"
                   value="30"
                   style="background-color: #fff; color: #000"
                 />
             </div>
+
+            <div class="field" style="width:  23.33%">
+              <label class="label label-clamp">Prix (${
+                portal.price
+              } € / jour)</label>
+              <input
+                id="portal-field-price-${portal.id}"
+                class="input"
+                type="text"
+                min="1"
+                step="1"
+                disabled
+                value="${(
+                  (parseInt(portal.price * 100 * portal.duration) / 100) *
+                  portal.adsCount
+                ).toFixed(2)} € au total"
+                style="background-color: #fff; color: #000; cursor: mouse"
+              />
+          </div>
          </div>
       `;
   portalFieldDiv
@@ -203,7 +213,7 @@ const createPortalField = (portal) => {
         (
           (parseInt(portal.price * 100 * portal.duration) / 100) *
           portal.adsCount
-        ).toFixed(2) + " €";
+        ).toFixed(2) + " € au total";
 
       calculateTotalPrice(portal);
     });
@@ -236,8 +246,22 @@ const calculateTotalPrice = (portal) => {
       return acc + p.price * p.duration * p.adsCount;
     }, 0);
   totalPriceDiv.innerHTML = `
-            ${totalPrice.toFixed(2)} € HT
+            <div><span>${totalPrice.toFixed(
+              2
+            )} €</span> <small class="percentage-text"> HT / mois</small></div>
             `;
+};
+
+const uiVisibility = () => {
+  const portalsEnabled = portals.filter((portal) => portal.enabled);
+
+  if (portalsEnabled.length > 0) {
+    adsDurationGlobalDiv.classList.remove("is-hidden");
+    totalPriceCard.classList.remove("is-hidden");
+  } else {
+    adsDurationGlobalDiv.classList.add("is-hidden");
+    totalPriceCard.classList.add("is-hidden");
+  }
 };
 
 portals.forEach((portal) => {
@@ -261,6 +285,7 @@ portals.forEach((portal) => {
   //update total price on price change
   input.addEventListener("change", (event) => {
     portal.enabled = event.target.checked;
+    uiVisibility();
     Object.assign(label.style, {
       border: portal.enabled ? "1px solid #bb2030" : "1px solid #e1e6eb",
       color: portal.enabled ? "#bb2030" : "#4a4a4a",
@@ -318,3 +343,15 @@ portals.forEach((portal) => {
   portalItem.appendChild(label);
   portalsList.appendChild(portalItem);
 });
+
+function sendHeight() {
+  parent.postMessage(
+    document.body.scrollHeight,
+    "https://www.meilleursbiens.pro"
+  );
+}
+
+window.onload = sendHeight;
+
+const resizeObserver = new ResizeObserver(() => sendHeight());
+resizeObserver.observe(document.body);
