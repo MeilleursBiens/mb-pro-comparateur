@@ -148,6 +148,8 @@ article.mb-article ul li:before {
   font-weight: bold;
   position: absolute;
   left: -1em;
+  font-size: 1.2em;
+  line-height: 1;
 }
 
 article.mb-article ol {
