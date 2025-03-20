@@ -362,31 +362,27 @@ article.mb-article .mb-cons h4:before {
 article.mb-article .mb-comparator-container {
   position: relative;
   width: 100%;
-  height: 400px;
-  margin: 20px 0;
-  overflow: hidden;
+  margin: 1.5em 0;
   border-radius: 8px;
+  background: white;
 }
 
-article.mb-article .mb-comparator-background {
+article.mb-article .mb-comparator-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  filter: blur(4px);
+  opacity: 1;
+  box-shadow: none;
+}
+
+article.mb-article .mb-comparator-container .ml-embedded {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
-  height: 100%;
-  background-image: url("https://cdn.prod.website-files.com/64381cd07651ff00fb958fd6/64382ec6e8457b3c0e13f99d_logo.svg");
-  background-size: cover;
-  background-position: center;
-  filter: blur(10px);
-  opacity: 0.1;
-}
-
-article.mb-article .mb-comparator-form {
-  position: relative;
+  padding: 20px;
   z-index: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
