@@ -1,175 +1,158 @@
-# Guide de Formatage Markdown pour la Transformation HTML
+# Agent de Formatage Markdown V2
 
 ## Objectif
 
-Ce guide vise à transformer un article brut en format Markdown structuré, optimisé pour sa transformation ultérieure en HTML. Il s'agit d'une étape intermédiaire entre la rédaction initiale et la transformation HTML, permettant d'améliorer la lisibilité et la structure du contenu tout en préservant son essence.
+Cet agent a pour mission de transformer les articles de comparaison de réseaux immobiliers en documents plus lisibles et mieux structurés, en utilisant des éléments de formatage Markdown, tout en restant strictement fidèle aux informations sources et en préservant leur aspect narratif.
 
 ## Règles de Formatage
 
-### 1. Structure Générale
+### 1. Structure de l'Article
 
-- Utiliser des titres de niveau appropriés (h1, h2, h3)
-- Maintenir une hiérarchie claire des sections
-- Ajouter des espaces entre les sections pour une meilleure lisibilité
-- Utiliser des séparateurs horizontaux (---) entre les sections majeures
+#### Introduction
+
+- Contexte du marché immobilier
+- Présentation des réseaux comparés
+- Objectif du comparatif
+- Liste des critères d'analyse
+
+#### Sections Principales
+
+1. Présentation des réseaux
+2. Modèle Économique et Structure
+   - Comparaison détaillée des modèles
+   - Tableau comparatif des coûts
+   - Comparateur interactif
+3. Outils et Technologies
+4. Accompagnement et Formation
+5. Visibilité et Communication
+6. Avis et Réputation
+7. Conclusion et Verdict Final
 
 ### 2. Mise en Forme du Texte
 
-- **Texte important** en gras avec `**texte**`
-- _Termes techniques_ en italique avec `*texte*`
-- Citations avec `> texte`
-- Code ou commandes avec `` `texte` ``
+#### Titres et Sous-titres
 
-### 3. Listes et Tableaux
+- Titre principal : niveau 1 (#)
+- Sections principales : niveau 2 (##)
+- Sous-sections : niveau 3 (###)
+- Utilisation de sous-titres descriptifs pour chaque section
 
-#### Listes à Puces
+#### Mise en Évidence
 
-Utiliser pour :
+- Utiliser le gras (\*\*) pour :
+  - Les noms des réseaux
+  - Les termes techniques importants
+  - Les points clés de différenciation
+  - Les caractéristiques majeures
+- Maintenir une mise en forme cohérente
+- Éviter la surutilisation du gras
 
-- Énumérer des points clés
-- Présenter des avantages/inconvénients
-- Lister des fonctionnalités
+### 3. Blocs de Citation
 
-Exemple :
+#### Utilisation des Blocs de Citation (>)
 
-```markdown
-- Point clé 1
-- Point clé 2
-  - Sous-point 2.1
-  - Sous-point 2.2
+- Réservés aux informations techniques essentielles :
+  - Structures de rémunération
+  - Points forts des réseaux
+  - Verdict final
+- Format standardisé :
+  ```
+  > **Titre :**
+  >
+  > - Point 1
+  > - Point 2
+  > - Point 3
+  ```
+
+### 4. Tableaux Comparatifs
+
+#### Utilisation des Tableaux
+
+- Limiter aux comparaisons techniques essentielles
+- Format standardisé :
+  ```markdown
+  | Critère   | Réseau 1 | Réseau 2 |
+  | --------- | -------- | -------- |
+  | **Point** | Détail   | Détail   |
+  ```
+
+#### Comparateur Interactif
+
+- Ajouter le comparateur après le tableau comparatif des modèles économiques
+- Format standardisé :
+  ```markdown
+  ![Comparateur de réseaux](https://cdn.prod.website-files.com/64381cd07651ff00fb958fd6/67dbda14310c114162207161_comparateur_mb.png)
+  ```
+- Placer le comparateur juste avant la conclusion de la section Modèle Économique
+- Ajouter une transition naturelle vers la section suivante
+
+### 5. Style Rédactionnel
+
+#### Approche Narrative
+
+- Privilégier le texte narratif aux listes
+- Transformer les listes en paragraphes descriptifs
+- Maintenir un ton professionnel et objectif
+- Utiliser des transitions naturelles entre les sections
+
+#### Paragraphes
+
+- Courts et aérés
+- Maximum 4-5 lignes
+- Espacement cohérent
+- Structure logique des idées
+
+### 6. Images et Ressources Visuelles
+
+#### Intégration des Images
+
+- Utiliser le format Markdown standard
+- Ajouter une description pertinente
+- Placer les images de manière stratégique
+- Optimiser pour la lecture
+
+### 7. Conclusion
+
+#### Structure de la Conclusion
+
+- Synthèse des points clés
+- Profils cibles pour chaque réseau
+- Verdict final en bloc de citation
+- Ton objectif et professionnel
+
+## Processus de Formatage
+
+1. Lire et comprendre l'article source
+2. Identifier la structure narrative principale
+3. Organiser le contenu en sections logiques
+4. Transformer les listes en texte narratif
+5. Ajouter des transitions naturelles
+6. Mettre en forme les éléments clés
+7. Vérifier la cohérence du flux narratif
+8. Ajouter les blocs de citation essentiels
+9. Rédiger une conclusion équilibrée
+10. Sauvegarder le fichier reformaté
+
+## Notes de Style
+
+- Privilégier une approche narrative fluide
+- Maintenir un équilibre entre lisibilité et contenu
+- Éviter les éléments décoratifs superflus
+- Garder une présentation professionnelle
+- Assurer une bonne lisibilité sur tous les appareils
+- Transformer systématiquement les listes en texte narratif sauf pour les données techniques essentielles
+
+## Sauvegarde des Fichiers
+
+- Les articles reformatés doivent être sauvegardés dans le dossier `article/ai-formatting`
+- Conserver le même nom de fichier que l'original
+- Vérifier que le fichier n'existe pas déjà dans le dossier de destination
+- Ajouter un suffixe `-formatted` si nécessaire pour éviter les conflits
+
+## Structure des Dossiers
+
 ```
-
-#### Listes Numérotées
-
-Utiliser pour :
-
-- Étapes d'un processus
-- Instructions séquentielles
-- Classements
-
-Exemple :
-
-```markdown
-1. Première étape
-2. Deuxième étape
-3. Troisième étape
+article/
+├── ai-writing/          # Articles sources
+└── ai-formatting/       # Articles reformatés
 ```
-
-#### Tableaux
-
-Utiliser pour :
-
-- Comparaisons directes
-- Données chiffrées
-- Caractéristiques techniques
-
-Exemple :
-
-```markdown
-| Fonctionnalité | MeilleursBiens | Autre Réseau |
-| -------------- | -------------- | ------------ |
-| Commission     | 100%           | 80%          |
-| Frais mensuels | 199€           | 250€         |
-```
-
-### 4. Mise en Page
-
-#### Encadrés
-
-Utiliser pour :
-
-- Points importants
-- Résumés
-- Conseils
-
-Exemple :
-
-```markdown
-> **Note importante** : Ce point est crucial pour la compréhension du sujet.
-```
-
-#### Encadrés Spéciaux
-
-Les encadrés spéciaux doivent être utilisés avec parcimonie et uniquement dans les cas suivants :
-
-1. **Points critiques** : Informations essentielles qui nécessitent une attention particulière
-2. **Résumés de section** : Synthèse des points clés d'une section importante
-3. **Avertissements** : Informations importantes sur des points de vigilance
-4. **Conseils pratiques** : Astuces ou bonnes pratiques spécifiques
-
-Format recommandé :
-
-```markdown
-> **Important** : [Contenu de l'encadré] > **Résumé** : [Contenu de l'encadré] > **Attention** : [Contenu de l'encadré] > **Conseil** : [Contenu de l'encadré]
-```
-
-Règles d'utilisation :
-
-- Maximum 2-3 encadrés par article
-- Ne pas utiliser d'encadrés dans les sections d'introduction ou de conclusion
-- Privilégier l'intégration naturelle des informations dans le texte
-- Éviter les encadrés imbriqués
-- Garder le contenu concis et pertinent
-
-#### Citations
-
-Utiliser pour :
-
-- Témoignages
-- Statistiques
-- Définitions
-
-Exemple :
-
-```markdown
-> "Citation pertinente d'un expert ou d'un utilisateur"
-```
-
-### 5. Liens et Références
-
-- Liens internes : `[texte](chemin)`
-- Liens externes : `[texte](url)`
-- Notes de bas de page : `[^1]`
-
-### 6. Images et Médias
-
-- Images : `![alt text](chemin/image.jpg)`
-- Vidéos : Utiliser des blocs de code pour les intégrations
-
-## Exemple de Transformation
-
-### Texte Brut
-
-```markdown
-MeilleursBiens offre plusieurs avantages aux agents immobiliers. Les agents conservent 100% de leurs commissions. Ils bénéficient d'outils technologiques performants. La formation est gratuite et régulière.
-```
-
-### Texte Formaté
-
-```markdown
-## Avantages de MeilleursBiens
-
-**MeilleursBiens** offre plusieurs avantages majeurs aux agents immobiliers :
-
-- **Commission intégrale** : Les agents conservent 100% de leurs commissions
-- **Outils technologiques** : Accès à des solutions performantes
-- **Formation continue** : Formations gratuites et régulières
-
-> **Point clé** : Cette structure permet une meilleure lisibilité et une transformation HTML plus efficace.
-```
-
-## Bonnes Pratiques
-
-1. **Préserver le Contenu** : Ne pas modifier le message ou l'information
-2. **Structurer Logiquement** : Organiser l'information de manière cohérente
-3. **Faciliter la Lecture** : Utiliser des espaces et des sauts de ligne appropriés
-4. **Optimiser pour le HTML** : Préparer une structure qui se transformera facilement
-5. **Maintenir la Cohérence** : Utiliser un style uniforme tout au long du document
-
-## Points d'Attention
-
-- Ne pas surcharger le texte avec trop de formatage
-- Garder une structure simple et claire
-- Éviter les imbrications complexes de listes
-- Maintenir une hiérarchie logique des titres
-- Assurer la compatibilité avec la transformation HTML ultérieure
