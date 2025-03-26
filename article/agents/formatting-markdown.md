@@ -4,6 +4,28 @@
 
 Cet agent a pour mission de transformer les articles de comparaison de réseaux immobiliers en documents plus lisibles et mieux structurés, en utilisant des éléments de formatage Markdown, tout en restant strictement fidèle aux informations sources et en préservant leur aspect narratif.
 
+## Recherche des Fichiers Sources
+
+Pour trouver les fichiers sources dans le dossier `article/ai-writing`, les noms de réseaux seront normalisés selon les règles suivantes :
+
+### Règles de Normalisation pour la Recherche
+
+1. Conversion en minuscules
+2. Suppression des accents
+3. Suppression des espaces et des tirets
+4. Suppression des caractères spéciaux
+5. Suppression des articles (le, la, les, etc.)
+
+### Exemples de Recherche
+
+- Pour trouver le fichier source de "À la bonne porte" :
+  - Chercher dans `article/ai-writing/alabonneporte.md`
+  - Chercher dans `article/ai-writing/a-la-bonne-porte.md`
+  - Chercher dans `article/ai-writing/ALABONNEPORTE.md`
+  - Tous ces fichiers seront considérés comme correspondants
+
+Cette normalisation permettra de trouver les fichiers sources correspondants de manière insensible à la casse et aux variations de formatage, assurant ainsi que toutes les données nécessaires pour l'article seront récupérées.
+
 ## Règles de Formatage
 
 ### 1. Structure de l'Article
@@ -75,6 +97,9 @@ Cet agent a pour mission de transformer les articles de comparaison de réseaux 
   | --------- | -------- | -------- |
   | **Point** | Détail   | Détail   |
   ```
+- Les tableaux doivent être placés directement dans le texte, sans encadré
+- Ajouter un titre de section approprié au-dessus du tableau
+- Éviter de surcharger les tableaux avec trop d'informations
 
 #### Comparateur Interactif
 
@@ -119,6 +144,27 @@ Cet agent a pour mission de transformer les articles de comparaison de réseaux 
 - Profils cibles pour chaque réseau
 - Verdict final en bloc de citation
 - Ton objectif et professionnel
+
+### 8. Utilisation des Encadrés
+
+#### Règles pour les Encadrés
+
+- Limiter le nombre d'encadrés à 3-4 maximum par article
+- Réserver les encadrés pour :
+  - Les points clés de différenciation
+  - Les solutions technologiques principales
+  - Le verdict final
+  - Les informations techniques essentielles
+- Format standardisé :
+  ```markdown
+  > **Titre de l'encadré**
+  >
+  > - Point 1
+  > - Point 2
+  > - Point 3
+  ```
+- Éviter de mettre les tableaux dans des encadrés
+- Utiliser les encadrés de manière stratégique pour mettre en valeur des informations importantes
 
 ## Processus de Formatage
 
