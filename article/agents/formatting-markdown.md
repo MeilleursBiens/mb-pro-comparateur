@@ -105,9 +105,13 @@ Cette normalisation permettra de trouver les fichiers sources correspondants de 
 
 - Ajouter le comparateur après le tableau comparatif des modèles économiques
 - Format standardisé :
+
+  ### Comparateur de rémunération des réseaux mandataires
+
   ```markdown
   ![Comparateur de réseaux](https://cdn.prod.website-files.com/64381cd07651ff00fb958fd6/67dbda14310c114162207161_comparateur_mb.png)
   ```
+
 - Placer le comparateur juste avant la conclusion de la section Modèle Économique
 - Ajouter une transition naturelle vers la section suivante
 

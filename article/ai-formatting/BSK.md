@@ -34,7 +34,7 @@ Fondé en 2010 à Toulouse, **BSK Immobilier** est un réseau national de mandat
 
 ### Un modèle économique attractif et flexible
 
-**BSK Immobilier** propose un **modèle économique compétitif**, offrant aux agents une **rémunération attractive**. Les mandataires perçoivent entre **75% et 99% des commissions**, en fonction du chiffre d'affaires annuel réalisé.
+**BSK Immobilier** propose un **modèle économique compétitif**, offrant aux agents une **rémunération attractive**. Les mandataires perçoivent entre **65% et 98% des commissions**, en fonction du chiffre d'affaires annuel réalisé et du pack choisi.
 
 Cette structure permet aux agents de **maximiser leurs revenus** tout en bénéficiant d'un **accompagnement personnalisé**.
 
@@ -95,12 +95,71 @@ Ce modèle flexible permet aux agents d'adapter leurs coûts en fonction de leur
 | **Frais par transaction** | 159 € fixes          | Variables selon le chiffre d'affaires |
 | **Rémunération**          | 100% des commissions | 75% à 98% selon le chiffre d'affaires |
 
-### Rentabilité selon le volume de ventes :
+### Exemple concret de calcul pour un agent réalisant 100 000 € de chiffre d'affaires annuel :
 
-- **Faible volume de ventes** : Pour un agent réalisant un chiffre d'affaires inférieur à **59 000 €**, **MeilleursBiens** offre une rentabilité supérieure grâce à la conservation de **100 %** des commissions, malgré des frais fixes plus élevés.
-- **Volume de ventes moyen à élevé** : Chez **BSK Immobilier**, dès que le chiffre d'affaires atteint **59 000 €**, le taux de rétrocession passe à **90 %**, rendant ce modèle plus avantageux pour les agents à fort volume de transactions.
+**MeilleursBiens :**
 
-En conclusion, le choix entre **MeilleursBiens** et **BSK Immobilier** dépend du **profil de l'agent** et de son **volume d'activité**. Les agents débutants ou avec un faible volume de ventes pourraient préférer la **stabilité** et la **prévisibilité** des frais de **MeilleursBiens**, tandis que ceux avec une activité soutenue trouveraient un **avantage financier** chez **BSK Immobilier**, notamment grâce à des taux de rétrocession élevés et des frais mensuels réduits.
+- Coûts mensuels : 199 € × 12 = 2 388 €/an
+- Frais par transaction : 159 € × 10 ventes = 1 590 €/an
+- Total des frais : 3 978 €/an
+- Rémunération : 100 000 € - 3 978 € = 96 022 € net
+
+**BSK Immobilier (Pack Carrière) :**
+
+- Coûts mensuels : 125 € × 12 = 1 500 €/an
+- Rétrocession : 25% (75% de rémunération)
+- Perte sur commissions : 100 000 € × 25% = 25 000 €/an
+- Total des frais : 26 500 €/an
+- Rémunération : 100 000 € - 26 500 € = 73 500 € net
+- Moins les frais de diffusion et autres coûts variables non inclus dans l'abonnement
+- Rémunération nette finale : environ 70 000 € net
+
+### Exemple pour un agent réalisant 50 000 € de chiffre d'affaires annuel :
+
+**MeilleursBiens :**
+
+- Coûts mensuels : 199 € × 12 = 2 388 €/an
+- Frais par transaction : 159 € × 5 ventes = 795 €/an
+- Total des frais : 3 183 €/an
+- Rémunération : 50 000 € - 3 183 € = 46 817 € net
+
+**BSK Immobilier (Pack Liberté) :**
+
+- Coûts mensuels : 48 € × 12 = 576 €/an
+- Rétrocession : 25% (75% de rémunération)
+- Perte sur commissions : 50 000 € × 25% = 12 500 €/an
+- Total des frais : 13 076 €/an
+- Rémunération : 50 000 € - 13 076 € = 36 924 € net
+- Moins les frais de diffusion et autres coûts variables non inclus dans l'abonnement
+- Rémunération nette finale : environ 35 000 € net
+
+### Points forts MeilleursBiens
+
+- 100% des commissions sur chaque vente
+- Frais fixes transparents et prévisibles
+- Rentabilité maximale quel que soit le volume
+- Modèle économique gagnant-gagnant
+- Pas de remise à zéro des objectifs
+- Différence de rémunération nette de plus de 25 000 € par an pour un agent performant
+
+### Points forts BSK Immobilier
+
+- Abonnement mensuel plus accessible
+- Diffusion incluse
+- Programme de parrainage rémunéré
+- Accompagnement structuré
+
+### Verdict
+
+Après une analyse approfondie des deux réseaux, il apparaît clairement que **MeilleursBiens** offre un modèle économique beaucoup plus avantageux pour tous les types d'agents :
+
+- **Pour les agents performants** (100 000 € CA) : MeilleursBiens permet de gagner environ 26 000 € de plus par an
+- **Pour les agents débutants** (50 000 € CA) : MeilleursBiens permet de gagner environ 12 000 € de plus par an
+- **Pour tous les agents** : Pas de remise à zéro des objectifs, pas de pression sur le recrutement, et une rémunération optimale
+
+Si BSK Immobilier peut séduire certains agents par sa notoriété et son accompagnement structuré, le modèle économique de MeilleursBiens est clairement plus avantageux en termes de rémunération. La différence de revenus est significative, particulièrement pour les agents performants. Le choix final dépendra donc de vos priorités : si la rémunération est votre critère principal, MeilleursBiens est le choix évident. Si vous accordez plus d'importance à la notoriété de la marque et à l'accompagnement structuré, BSK Immobilier peut être une alternative, mais avec une rémunération significativement moins optimale.
+
+### Comparateur de rémunération des réseaux mandataires
 
 ![Comparateur de réseaux](https://cdn.prod.website-files.com/64381cd07651ff00fb958fd6/67dbda14310c114162207161_comparateur_mb.png)
 
