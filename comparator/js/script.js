@@ -1,6 +1,7 @@
 // Function to send height to parent window
 function sendHeight() {
-  const height = document.documentElement.offsetHeight;
+  const container = document.getElementById("network-comparator"); 
+const height = container?.getBoundingClientRect().height || 0;
   window.parent.postMessage(height, "*");
 }
 
