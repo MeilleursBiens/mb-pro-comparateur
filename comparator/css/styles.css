@@ -859,9 +859,13 @@ span#mb_difference_2 {
 }
 
 /* Styles pour les boutons et conteneurs */
+#network-comparator {
+  padding: 2rem 0
+}
+
 .comparator-container {
   max-width: 800px;
-  margin: 2rem auto;
+  margin: 0rem auto;
   padding: 2rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
