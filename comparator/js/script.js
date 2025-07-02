@@ -1,6 +1,6 @@
 // Function to send height to parent window
 function sendHeight() {
-  const height = document.documentElement.scrollHeight;
+  const height = document.documentElement.offsetHeight;
   window.parent.postMessage(height, "*");
 }
 
