@@ -1,4 +1,4 @@
-let reseauxList = [
+window.reseauxList = [
   { name: "iad France", commission: 69, prix_pack: 163 },
   { name: "Safti", commission: 70, prix_pack: 159 },
   { name: "BSK Immobilier", commission: 75, prix_pack: 125 },

@@ -15,178 +15,211 @@
   </head>
   <body>
     <main id="network-comparator">
-      <div class="card comparator-container">
+      <div class="card comparator-container glass">
         <div class="card-content">
-          <!-- Champs principaux -->
-          <div class="field">
-            <label class="label">
-              Honoraires annuels HT
-              <span class="has-text-primary">(en €)</span>
-            </label>
-            <div class="control">
+          <!-- Nouveau champ mutualisé -->
+          <div class="field unified-search-wrapper">
+            <label class="label">🔍 Votre réseau ou agence</label>
+            <div class="unified-search-container">
               <input
-                id="ar_honoraires"
+                id="entitySearch"
                 class="input"
-                type="number"
-                min="1"
-                step="1"
-                value="75000"
+                type="text"
+                placeholder="Recherchez un réseau ou une agence... 🔎"
+                autocomplete="off"
               />
+              <div id="entitySuggestions" class="suggestions"></div>
             </div>
           </div>
 
-          <div class="field">
-            <label class="label">Nombre de ventes</label>
-            <div class="control">
-              <input
-                id="ar_ventes"
-                class="input"
-                type="number"
-                min="1"
-                step="1"
-                value="12"
-              />
-            </div>
+          <!-- Inputs cachés pour compatibilité avec les fonctions existantes -->
+          <div style="display:none">
+            <input id="reseauSearch" type="text" />
+            <input id="agencySearch" type="text" />
+            <div id="reseauxSuggestions"></div>
+            <div id="agenciesSuggestions"></div>
           </div>
 
-          <!-- Champs de recherche en 2 colonnes -->
-          <div class="columns">
-            <div class="column is-6">
-              <div class="field">
-                <label class="label">Sélectionnez un réseau</label>
-                <div class="control search-container">
-                  <input
-                    id="reseauSearch"
-                    class="input"
-                    type="text"
-                    placeholder="Recherchez votre réseau..."
-                  />
-                  <div id="reseauxSuggestions" class="suggestions"></div>
-                </div>
+          <div class="grid-form">
+            <!-- Bloc Honoraires -->
+            <div class="field field-block">
+              <label class="label"
+                >💶 Honoraires annuels HT <span class="label-hint">(€)</span
+              ></label>
+              <div class="dual-input" data-unit="€">
+                <input
+                  id="ar_honoraires"
+                  class="input"
+                  type="number"
+                  min="10000"
+                  step="500"
+                  value="75000"
+                />
+                <input
+                  id="ar_honoraires_range"
+                  class="range"
+                  type="range"
+                  min="10000"
+                  max="300000"
+                  step="1000"
+                  value="75000"
+                />
               </div>
             </div>
-            <div class="column is-6">
-              <div class="field">
-                <label class="label">Sélectionnez une agence</label>
-                <div class="control agency-search-container">
-                  <input
-                    id="agencySearch"
-                    class="input"
-                    type="text"
-                    placeholder="Recherchez votre agence..."
-                  />
-                  <div id="agenciesSuggestions" class="suggestions"></div>
-                </div>
+
+            <!-- Bloc Ventes -->
+            <div class="field field-block">
+              <label class="label">🛒 Nombre de ventes</label>
+              <div class="dual-input" data-unit="🏷️">
+                <input
+                  id="ar_ventes"
+                  class="input"
+                  type="number"
+                  min="1"
+                  step="1"
+                  value="12"
+                />
+                <input
+                  id="ar_ventes_range"
+                  class="range"
+                  type="range"
+                  min="1"
+                  max="60"
+                  step="1"
+                  value="12"
+                />
+              </div>
+            </div>
+
+            <!-- Forfait -->
+            <div class="field field-block">
+              <label class="label"
+                >📦 Forfait mensuel HT <span class="label-hint">(€/mois)</span
+              ></label>
+              <div class="dual-input" data-unit="€">
+                <input
+                  id="ar_forfait"
+                  class="input"
+                  type="number"
+                  min="0"
+                  step="5"
+                  value="150"
+                />
+                <input
+                  id="ar_forfait_range"
+                  class="range"
+                  type="range"
+                  min="0"
+                  max="1000"
+                  step="5"
+                  value="150"
+                />
+              </div>
+            </div>
+
+            <!-- Commissions -->
+            <div class="field field-block">
+              <label class="label"
+                >🎯 Commissions perçues <span class="label-hint">(%)</span
+              ></label>
+              <div class="dual-input" data-unit="%">
+                <input
+                  id="ar_commissions"
+                  class="input"
+                  type="number"
+                  min="1"
+                  max="100"
+                  step="1"
+                  value="70"
+                />
+                <input
+                  id="ar_commissions_range"
+                  class="range"
+                  type="range"
+                  min="1"
+                  max="100"
+                  step="1"
+                  value="70"
+                />
               </div>
             </div>
           </div>
 
-          <!-- Texte explicatif -->
-          <p class="has-text-centered mt-1">
-            Les chiffres des réseaux et des agences peuvent être différents de la
-            réalité, vous pouvez les adapter manuellement juste en dessous
+          <p class="disclaimer">
+            ℹ️ Les données peuvent varier selon les situations réelles. Ajustez
+            librement pour refléter votre cas.
           </p>
 
-          <!-- Forfait et Commissions en 2 colonnes -->
-          <div class="columns">
-            <div class="column is-6">
-              <div class="field">
-                <label class="label">
-                  Forfait mensuel d'adhésion HT
-                  <span class="has-text-primary">(en €/mois)</span>
-                </label>
-                <div class="control">
-                  <input
-                    id="ar_forfait"
-                    class="input"
-                    type="number"
-                    min="0"
-                    step="1"
-                    value="150"
-                  />
-                </div>
+          <!-- Résultats -->
+          <div id="resultsSection" class="results-grid">
+            <div class="result-card result-current">
+              <div class="result-header">
+                <h3 class="result-title">📉 Votre situation actuelle</h3>
+                <span class="result-badge neutral" id="situation-type"
+                  >Votre situation</span
+                >
               </div>
+              <div class="result-value">
+                <span id="ar_total" class="amount" data-amount="52200"
+                  >52.200€</span
+                ><span class="per">/an</span>
+              </div>
+              <p class="result-sub">Après forfait & structure partagée</p>
             </div>
-            <div class="column is-6">
-              <div class="field">
-                <label class="label">
-                  Commissions perçues sur les ventes
-                  <span class="has-text-primary">(en %)</span>
-                </label>
-                <div class="control">
-                  <input
-                    id="ar_commissions"
-                    class="input"
-                    type="number"
-                    min="1"
-                    step="1"
-                    value="70"
-                  />
+
+            <div class="result-vs">⇄</div>
+
+            <div class="result-card result-mb highlight">
+              <div class="result-header">
+                <h3 class="result-title">🚀 Avec MeilleursBiens</h3>
+                <span class="result-badge accent">100% commissions</span>
+              </div>
+              <div class="result-value">
+                <span id="mb_total" class="amount" data-amount="75000"
+                  >75.000€</span
+                ><span class="per">/an</span>
+              </div>
+              <div class="growth-line">
+                <span class="growth-tag"
+                  >📈 +<span id="percentage_increase">43.7</span>%</span
+                >
+              </div>
+              <p class="result-sub">Pack fixe 199€ + 159€ / vente</p>
+            </div>
+
+            <div class="saving-card">
+              <div class="saving-label">🕳️ Coût caché de votre modèle actuel</div>
+              <div class="saving-value">
+                <span id="mb_difference" class="saving-amount" data-amount="22800"
+                  >22.800€</span
+                ><span class="per">/an</span>
+              </div>
+              <div class="bar-wrapper">
+                <div class="bar-bg">
+                  <div
+                    class="bar-fill"
+                    id="savingBar"
+                    style="width:60%"
+                  ></div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Section des résultats -->
-          <div id="resultsSection">
-            <hr />
-
-            <!-- Résultats en 2 colonnes -->
-            <div class="columns">
-              <div class="column is-6">
-                <div class="result-card-normal">
-                  <h4 class="title has-text-centered is-4 text-large">
-                    <span id="ar_total">52.200€</span> <small>/an</small>
-                  </h4>
-                  <h5 class="subtitle has-text-centered is-5 text-small">
-                    <span id="situation-type">Votre situation</span>
-                  </h5>
-                </div>
-              </div>
-              <div class="column is-6">
-                <div class="result-card-primary">
-                  <h4
-                    class="title has-text-centered is-4 has-text-primary text-large"
-                  >
-                    <div class="result-line">
-                      <span id="mb_total">75.000€</span
-                      ><small class="has-text-primary">/an</small
-                      ><span class="percentage-text has-text-primary"
-                        >(+<span id="percentage_increase">43.7</span>%)</span
-                      >
-                    </div>
-                  </h4>
-                  <h5 class="subtitle has-text-centered is-5 text-small">
-                    Avec MeilleursBiens
-                  </h5>
-                </div>
-              </div>
-            </div>
-
-            <div class="has-text-centered mt-1">
-              <div class="cost-display">
-                <div class="cost-text">Votre situation vous coûte</div>
-                <div class="cost-amount">
-                  <span id="mb_difference" class="difference-amount"
-                    >22.800€</span
-                  >
-                  <span class="cost-period">/ an</span>
-                </div>
-              </div>
-              <p class="mb-2 has-text-weight-bold">
-                Chez nous c'est simple,
-                <span class="has-text-primary">199€/mois</span> pour gagner
-                <span class="has-text-primary">100% de vos commissions</span>
-              </p>
-            </div>
+          <!-- CTA -->
+          <div class="cta-stack">
+            <button class="btn-primary" id="ctaContact">🤔 Comment est-ce possible ?</button>
+            <p class="cta-text">🧠 On vous aide à projeter précisément vos revenus selon vos objectifs.</p>
           </div>
         </div>
       </div>
-    </main>
 
+      <div id="advisor-widget" class="advisor-widget hidden"></div>
+    </main>
 
     <script src="comparator/js/script.js"></script>
     <script src="comparator/js/compareNetworks.js"></script>
     <script src="comparator/js/compareAgencies.js"></script>
+    <script src="comparator/js/unifiedSearch.js"></script>
   </body>
 </html>

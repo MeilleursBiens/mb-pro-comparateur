@@ -76,6 +76,11 @@ var mb_text_difference;
 var mb_text_total_2;
 var mb_text_difference_2;
 
+var ar_input_honoraires_range;
+var ar_input_forfait_range;
+var ar_input_ventes_range;
+var ar_input_commissions_range;
+
 let isNetwork = true;
 
 // Fonction pour initialiser un réseau
@@ -154,6 +159,11 @@ document.addEventListener("DOMContentLoaded", function () {
   mb_text_total_2 = document.querySelector("#mb_total_2");
   mb_text_difference_2 = document.querySelector("#mb_difference_2");
 
+  ar_input_honoraires_range = document.querySelector("#ar_honoraires_range");
+  ar_input_forfait_range = document.querySelector("#ar_forfait_range");
+  ar_input_ventes_range = document.querySelector("#ar_ventes_range");
+  ar_input_commissions_range = document.querySelector("#ar_commissions_range");
+
   // Add event listeners only after elements are found
   if (ar_input_honoraires) {
     ar_input_honoraires.addEventListener("input", calculate);
@@ -168,7 +178,62 @@ document.addEventListener("DOMContentLoaded", function () {
     ar_input_commissions.addEventListener("input", calculate);
   }
 
-  // Initial calculation
+  function bindBiDirectional(numberInput, rangeInput) {
+    if (!numberInput || !rangeInput) return;
+    // Init range from number
+    rangeInput.value = numberInput.value;
+    numberInput.addEventListener("input", () => {
+      rangeInput.value = numberInput.value;
+      calculate();
+    });
+    rangeInput.addEventListener("input", () => {
+      numberInput.value = rangeInput.value;
+      calculate();
+    });
+  }
+
+  bindBiDirectional(ar_input_honoraires, ar_input_honoraires_range);
+  bindBiDirectional(ar_input_forfait, ar_input_forfait_range);
+  bindBiDirectional(ar_input_ventes, ar_input_ventes_range);
+  bindBiDirectional(ar_input_commissions, ar_input_commissions_range);
+
+  const ctaBtn = document.getElementById("ctaContact");
+  if (ctaBtn) {
+    ctaBtn.addEventListener("click", () => {
+      // Masquer le simulateur principal (carte + hero)
+      const hero = document.querySelector('.hero-intro');
+      const comparator = document.querySelector('.comparator-container');
+      if (hero) hero.classList.add('hidden');
+      if (comparator) comparator.classList.add('hidden');
+
+      // Afficher conteneur widget
+      const widgetContainer = document.getElementById('advisor-widget');
+      if (widgetContainer) {
+        widgetContainer.classList.remove('hidden');
+        widgetContainer.classList.add('loading');
+      }
+
+      // Injecter le script si pas déjà injecté
+      if (!document.getElementById('yc_embed_script')) {
+        const s = document.createElement('script');
+        s.src = 'https://embed.ycb.me';
+        s.async = true;
+        s.id = 'yc_embed_script';
+        s.dataset.domain = 'meilleursbiens-carriere';
+        s.dataset.displaymode = 'light';
+        s.onload = () => {
+          if (widgetContainer) widgetContainer.classList.remove('loading');
+        };
+        widgetContainer?.appendChild(s);
+      }
+
+      // Remonter l'info au parent si besoin
+      window.parent.postMessage({ intent: 'openContact' }, '*');
+      updateHeightAfterChanges();
+    });
+  }
+
+  // Recalcul initial déjà appelé, mais recalcul après liaison sliders
   calculate();
 });
 
@@ -213,6 +278,16 @@ function calculate() {
   if (mb_text_total) mb_text_total.innerHTML = formatPrice(resultMB);
   if (mb_text_difference)
     mb_text_difference.innerHTML = formatPrice(networkCost);
+
+  // Mettre à jour barre économie (coût caché)
+  const savingBar = document.getElementById("savingBar");
+  if (savingBar) {
+    let ratio = 0;
+    if (honoraires > 0) {
+      ratio = Math.min(100, Math.max(0, (networkCost / honoraires) * 100));
+    }
+    savingBar.style.width = ratio.toFixed(1) + "%";
+  }
 
   // Mettre à jour les autres variables
   ar_total = resultNormal;

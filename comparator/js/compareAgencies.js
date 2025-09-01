@@ -37,6 +37,40 @@ let agenciesList = [
   { name: "Welmo", commission: 45 }, // Digital first
 ];
 
+window.agenciesList = [
+  { name: "Century 21", commission: 35 },
+  { name: "Laforêt", commission: 40 },
+  { name: "Orpi", commission: 38 },
+  { name: "ERA Immobilier", commission: 40 },
+  { name: "Stéphane Plaza", commission: 35 },
+  { name: "Foncia", commission: 35 },
+  { name: "Nexity", commission: 35 },
+  { name: "Square Habitat", commission: 38 },
+  { name: "Citya Immobilier", commission: 35 },
+  { name: "L'Adresse", commission: 40 },
+  { name: "Avis Immobilier", commission: 38 },
+  { name: "Cimm Immobilier", commission: 35 },
+  { name: "La Forêt Immobilier", commission: 40 },
+  { name: "Arthurimmo", commission: 38 },
+  { name: "Nestenn", commission: 35 },
+  { name: "Immo de France", commission: 35 },
+  { name: "Agences Réunies", commission: 38 },
+  { name: "Barnes", commission: 45 },
+  { name: "Daniel Féau", commission: 45 },
+  { name: "Sotheby's", commission: 45 },
+  { name: "Emile Garcin", commission: 45 },
+  { name: "John Taylor", commission: 45 },
+  { name: "Coldwell Banker", commission: 45 },
+  { name: "Engel & Völkers", commission: 45 },
+  { name: "Knight Frank", commission: 45 },
+  { name: "Proprioo", commission: 50 },
+  { name: "Hosman", commission: 45 },
+  { name: "Zefir", commission: 45 },
+  { name: "Liberkeys", commission: 45 },
+  { name: "PriceHubble", commission: 45 },
+  { name: "Welmo", commission: 45 },
+];
+
 // Ajouter la gestion du clavier pour les agences
 let currentAgencySelection = -1;
 
