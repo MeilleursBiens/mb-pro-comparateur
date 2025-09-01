@@ -858,11 +858,6 @@ span#mb_difference_2 {
   }
 }
 
-/* Styles pour les boutons et conteneurs */
-#network-comparator {
-  padding: 2rem 0
-}
-
 .disclaimer{
     font-size: 0.875rem;
     color: #7a7a7a;
@@ -1206,7 +1201,7 @@ body {background: radial-gradient(circle at 20% 20%, #fff, #f5f7fa);}
 .badge {background:#fff;border:1px solid #e4e8ec;padding:.5rem .85rem;font-size:.75rem;font-weight:600;border-radius:30px;letter-spacing:.5px;text-transform:uppercase;color:#54606e;display:inline-flex;align-items:center;gap:.4rem;}
 .badge-accent {background:#bb2230;color:#fff;border-color:#bb2230;}
 
-.glass {background:rgba(255,255,255,.85);backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.2);box-shadow:0 8px 28px -6px rgba(15,23,42,.15),0 0 0 1px rgba(15,23,42,.05);}
+.glass {background:rgba(255,255,255,.85);backdrop-filter:blur(18px) saturate(180%);    border: 1px solid #e6e6e6;box-shadow:0 8px 28px -6px rgba(15,23,42,.15),0 0 0 1px rgba(15,23,42,.05);}
 
 .grid-form {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;align-items:start;margin-bottom:1.5rem;margin-top: 20px;}
 .grid-form .span-2 {grid-column:span 2;}
